@@ -1,0 +1,58 @@
+PANCAKE BOYS — VS CODE HANDOFF
+
+This is a working website, not just an image mockup. Continue the existing files in website/.
+Open C:\Users\carte\Downloads\Pancake Boys as the VS Code project folder.
+
+APPROVED DIRECTION
+Clean, sleek, bold, spacious, and personal. An outdoor community brand with the confidence of a clothing label. The owner loves the current draft; evolve it instead of redesigning it.
+Warm off-white, charcoal, apron brown. Large condensed headlines. Actual hike photos. Full-screen hamburger navigation. No generic rounded-card grids, gradients, floating badges, decorative statistics, or canned adventure copy.
+
+REFERENCE PREFERENCES
+norda (https://nordarun.com/): spacious mountain imagery and immersive opening.
+Bandit (https://banditrunning.com/): the owner likes its hamburger-menu approach.
+Deus Ex Machina (https://deuscustoms.com/): very cool personality and setup, but simplify the crowding and avoid making this primarily a clothing website.
+Gozney (https://www.gozney.com/): cool, but its treatment felt too similar to an AI-built website. Avoid that direction.
+
+MISSION & CONSTRAINTS
+Free pancakes on Utah hikes every few weeks; bring more people together and keep it fun.
+Merch, contributions, and partnerships may fund supplies and help with filming/editing/coordination.
+The founders want to spend their time on hikes, without an ongoing content-production burden.
+Pancakes stay free. Do not describe the group as a registered charity or imply tax-deductible donations.
+Instagram: https://www.instagram.com/pancak3boys/
+Saturday October 24, 2026 is TENTATIVE. Trail, time, distance, and elevation are unknown.
+No products, prices, checkout, payment service, email address, RSVP endpoint, or mailing-list service is established.
+
+FILES
+website/index.html — existing homepage and dialogs
+website/styles.css — current desktop/mobile design
+website/app.js — accessible dialogs, navigation, gallery, and event rendering
+website/content.js — Instagram and tentative event configuration
+website/assets/ — six optimized real photographs plus story PDF
+website/references/ — desktop homepage, desktop menu, mobile homepage screenshots
+Photos/ — 63 original JPEG photographs; no video clips were found here
+Pancake Boys - Website Proposal.pdf — approved design proposal
+Pancake Boys - Our Story.pdf — lightly edited founder story
+Vision and constraints.pdf — source vision document
+
+CURRENT FUNCTIONALITY
+Full-screen menu, anchors, full-story dialog, photo viewer, support information dialog, real Instagram links.
+RSVPs, payments, partnership submissions, and Shopify are not connected. Nothing pretends to submit data.
+Checked desktop and mobile, including menu navigation, dialog closing/Escape, focus restoration, image loading, horizontal overflow, and JavaScript syntax.
+
+RUN LOCALLY
+From the project root: python -m http.server 4173 --bind 127.0.0.1 --directory website
+Preview: http://127.0.0.1:4173/
+If port 4173 is already serving this site, reuse it; don't stop an unrelated process.
+Bundled Python, if needed: C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+
+PROMPT TO SEND
+Continue the existing Pancake Boys website in this workspace. Read START-HERE.txt and the website README, review the approved proposal PDF, and visually inspect the three screenshots in website/references/ before editing. The owner loves this draft. Preserve its layout, typography, colors, real photos, and copy.
+
+Add a restrained motion pass: a smooth full-screen menu entrance/exit with lightly staggered links; subtle once-only image and headline reveals as they enter the viewport; and an intentional sliding photo strip or gallery with manual controls, keyboard support, and touch support. Keep the page's current photo composition and visual hierarchy. Avoid scroll hijacking, aggressive parallax, distracting loops, or hiding content if JavaScript fails. Respect prefers-reduced-motion and verify keyboard focus and dialog behavior after animation changes.
+
+Prepare the hero to accept a real short hiking/pancake video through content configuration. Use a muted, inline loop with the existing mountain image as its poster/fallback, accessible pause/play control, and a still-image experience for reduced motion. There are no real video clips in the project yet: do not download stock footage or fabricate a video. Build and test the photo fallback, document exactly where an owner-supplied clip should go, and keep other motion work moving.
+
+Keep the current lightweight HTML/CSS/JavaScript setup unless a concrete requirement justifies a dependency. Make the changes, run the site, and inspect desktop and mobile. Confirm no horizontal overflow, broken media, console errors, inaccessible menu links, or fake submissions. Return before/after screenshots and a concise summary. Keep October 24 tentative and keep @pancak3boys. Work locally; publishing and payment integrations are separate later tasks.
+
+WORKFLOW
+Use one agent to edit at a time. Codex can implement this motion pass. Claude Code can then provide a read-only second opinion on motion, accessibility, and visual consistency if desired. Do not have both changing the same files simultaneously.

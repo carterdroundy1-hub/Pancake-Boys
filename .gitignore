@@ -1,0 +1,11 @@
+/Photos/
+/Pancakes*/
+/tmp/
+/.vscode/
+node_modules/
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store
+*.log

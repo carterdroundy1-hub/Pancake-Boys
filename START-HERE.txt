@@ -29,7 +29,7 @@ website/app.js — accessible dialogs, navigation, gallery, and event rendering
 website/content.js — Instagram and tentative event configuration
 website/assets/ — six optimized real photographs plus story PDF
 website/references/ — desktop homepage, desktop menu, mobile homepage screenshots
-Original photographs remain in C:\Users\carte\Downloads\Pancake Boys\Photos; no video clips were found there
+Original photographs remain in C:\Users\carte\Downloads\Pancake Boys\Photos; 28 real MOV clips were subsequently found in the original hike ZIP archive
 Pancake Boys - Website Proposal.pdf — approved design proposal
 Pancake Boys - Our Story.pdf — lightly edited founder story
 Vision and constraints.pdf — source vision document
@@ -50,20 +50,19 @@ Continue the existing Pancake Boys website in this workspace. Read START-HERE.tx
 
 Add a restrained motion pass: a smooth full-screen menu entrance/exit with lightly staggered links; subtle once-only image and headline reveals as they enter the viewport; and an intentional sliding photo strip or gallery with manual controls, keyboard support, and touch support. Keep the page's current photo composition and visual hierarchy. Avoid scroll hijacking, aggressive parallax, distracting loops, or hiding content if JavaScript fails. Respect prefers-reduced-motion and verify keyboard focus and dialog behavior after animation changes.
 
-Prepare the hero to accept a real short hiking/pancake video through content configuration. Use a muted, inline loop with the existing mountain image as its poster/fallback, accessible pause/play control, and a still-image experience for reduced motion. There are no real video clips in the project yet: do not download stock footage or fabricate a video. Build and test the photo fallback, document exactly where an owner-supplied clip should go, and keep other motion work moving.
+Prepare the hero to accept a real short hiking/pancake video through content configuration. Use a muted, inline loop with the existing mountain image as its poster/fallback, accessible pause/play control, and a still-image experience for reduced motion. Original instruction before the archive was reviewed: do not download stock footage or fabricate a video. Build and test the photo fallback, document exactly where an owner-supplied clip should go, and keep other motion work moving.
 
 Keep the current lightweight HTML/CSS/JavaScript setup unless a concrete requirement justifies a dependency. Make the changes, run the site, and inspect desktop and mobile. Confirm no horizontal overflow, broken media, console errors, inaccessible menu links, or fake submissions. Return before/after screenshots and a concise summary. Keep October 24 tentative and keep @pancak3boys. Work locally; publishing and payment integrations are separate later tasks.
 
 WORKFLOW
 Use one agent to edit at a time. Codex can implement this motion pass. Claude Code can then provide a read-only second opinion on motion, accessibility, and visual consistency if desired. Do not have both changing the same files simultaneously.
 
-MOTION PASS STATUS / OCTOBER 1, 2026
-Implemented locally in the Desktop workspace, preserving the approved design, photos, typography, colors, and copy.
-Complete: menu entrance/exit and staggered links; once-only headline/photo reveals; sliding photo-dialog gallery with previous/next, Left/Right, Home/End, native touch swipes, wrapping, caption/count announcements, Escape, and focus restoration.
-Reduced-motion visitors receive immediate transitions and the hero still image. Preference changes during animation are handled.
-Browser checks passed on desktop and emulated touch/mobile, with and without reduced motion, plus narrow/tablet/landscape sizes. Fixed keyboard focus wrapping and a rapid-Escape/reopen animation race.
-No horizontal overflow, broken default media, or console/runtime errors were found.
-Hero film: place the real owner-supplied clip at website/assets/hero-hike.mp4 and set heroVideoSrc in website/content.js to 'assets/hero-hike.mp4'. Until then it stays null and makes no video request.
-Playback with actual footage remains pending. No footage was downloaded or fabricated. The photo fallback and missing-clip/reduced-motion paths are verified.
-Read website/README.md for the film handoff and test command. See website/qa/test-results.json and before/after screenshots in website/qa/.
-Publishing remains with the owner. No deployment, payment integration, or fake submissions were added.
+CINEMATIC PASS STATUS / OCTOBER 1, 2026
+Latest user request authorizes verification, commit, push and deployment review.
+The approved layout, typography, colors, photos, copy and community focus remain.
+Added: 950ms session intro; direction-aware header; rendered-line reveals; charcoal menu; moving strip with pause, drag, native swipe and keyboard controls.
+Actual footage found: original Stewart Falls ZIP contains 28 MOV clips. IMG_6085.MOV supplies the silent eight-second mountain loop at website/assets/hero-hike.mp4 (907,575 bytes).
+Mountain photo fallback remains. Reduced motion, no JavaScript, missing media and preference changes are supported. No stock footage or fabricated URL.
+Read website/README.md for behavior, source provenance, replacement instructions and tests.
+Keep pancak3boys.com. Public GoDaddy DNS needs correction; read website/deployment.md. No DNS changes made.
+October 24 stays tentative, pancakes stay free; checkout, payments and submissions remain unconnected.

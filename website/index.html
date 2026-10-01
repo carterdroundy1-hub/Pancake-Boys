@@ -15,7 +15,7 @@
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
       <img class="hero-image" src="assets/mountains.webp" alt="A mountain stream winding through the trees below a Utah ridgeline" fetchpriority="high">
-      <video class="hero-video" muted playsinline loop preload="none" poster="assets/mountains.webp" aria-hidden="true" hidden></video>
+      <video class="hero-video" autoplay muted playsinline loop preload="none" poster="assets/mountains.webp" aria-hidden="true" hidden></video>
       <button class="video-toggle" aria-label="Pause background video" hidden>PAUSE FILM <span aria-hidden="true">Ⅱ</span></button>
       <div class="hero-shade"></div>
       <div class="hero-top"><span>OUT OF THE KITCHEN.<br>INTO THE MOUNTAINS.</span><span>UTAH, USA<br>EVERYONE'S INVITED.</span></div>
@@ -37,6 +37,18 @@
       <div class="section-label"><span>02 / HOW WE GOT HERE</span><span>A GRIDDLE & A QUESTIONABLE IDEA</span></div>
       <div class="story-layout"><div class="story-copy"><h2 id="story-title">IT STARTED<br>WITH A BAD<br>BUSINESS IDEA.</h2><p>Cold hikers. Hungry hikers. A mountain full of potential customers. We thought we'd struck gold.</p><p>Then we did the math. So we kept the good part: hiking with friends and making pancakes at the top.</p><p>A few hikes later, 50 people we'd never met showed up at Stewart Falls. Turns out, free pancakes are a pretty good way to make friends.</p><button class="text-link cream" data-dialog="story-dialog">THE WHOLE STORY <span aria-hidden="true">↗</span></button></div>
       <figure class="story-photo"><img src="assets/the-boys.webp" alt="Two Pancake Boys smiling in their brown aprons with a red mixing bowl" loading="lazy"><figcaption>THE APRONS MADE IT OFFICIAL.</figcaption></figure></div>
+    </section>
+
+    <section class="trail-strip" aria-label="More moments from the trail">
+      <div class="trail-strip-head"><span>MORE FROM THE TRAIL</span><div class="trail-strip-controls"><button data-strip-prev aria-label="Move hike photos left" hidden>←</button><button data-strip-pause aria-label="Pause hike photo strip" hidden>PAUSE STRIP <span aria-hidden="true">Ⅱ</span></button><button data-strip-next aria-label="Move hike photos right" hidden>→</button></div></div>
+      <p id="strip-hint" class="sr-only">Drag or swipe to browse hike photos. Use left and right arrow keys when the strip is focused. Pause stops the automatic movement.</p>
+      <div class="trail-viewport" tabindex="0" role="region" aria-label="Hike photo strip" aria-describedby="strip-hint"><div class="trail-track"><div class="trail-group">
+        <img src="assets/the-gathering.webp" width="340" height="240" alt="Friends gathering beside the stream at Stewart Falls" loading="lazy" draggable="false">
+        <img src="assets/the-boys.webp" width="340" height="240" alt="The Pancake Boys in their brown aprons" loading="lazy" draggable="false">
+        <img src="assets/mountains.webp" width="340" height="240" alt="The Utah mountains that bring us outside" loading="lazy" draggable="false">
+        <img src="assets/batter.webp" width="340" height="240" alt="Pouring pancake batter onto the trail griddle" loading="lazy" draggable="false">
+        <img src="assets/pancakes.webp" width="340" height="240" alt="Breakfast cooking outdoors" loading="lazy" draggable="false">
+      </div></div></div>
     </section>
 
     <section class="field section" id="field-notes" aria-labelledby="field-title">

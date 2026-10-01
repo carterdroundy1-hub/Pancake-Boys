@@ -1,54 +1,41 @@
-# Pancake Boys website
+﻿# Pancake Boys website
 
-Local website with the approved design and a restrained motion pass. No build step or third-party runtime dependencies.
+The approved layout, type, palette, photos and community copy remain intact. Plain HTML/CSS/JavaScript; no runtime dependencies or build step. `website/` is the maintained source. Root `index.html` loads these same files for GitHub Pages; run `python website/qa/sync_entry.py` after markup changes. Legacy root CSS/JS copies are unused.
 
-Serve this folder with any static web server. From the Desktop Pancake Boys project:
-
-```powershell
-python -m http.server 4174 --bind 127.0.0.1 --directory website
-```
-
-Preview: http://127.0.0.1:4174/. Port 4173 was serving the older Downloads copy during development, so this workspace uses 4174. Do not stop an unrelated server.
-
-If Python is unavailable on PATH, use `C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe` in place of `python`.
-
-Edit `content.js` to set the Instagram URL, contact email, and confirmed next-hike details. Until then, no date or contact address is invented. Gallery photos, the full-screen menu, story, and support dialogs work locally.
-
-Event RSVPs, mailing lists, contributions, partnership submissions, and Shopify checkout are not connected. The first draft intentionally does not collect or pretend to submit information. Those integrations need real destinations before launch.
-
-Original photographs belong to Pancake Boys. Website assets are resized WebP copies with metadata removed. The source photo collection remains in `C:\Users\carte\Downloads\Pancake Boys\Photos`; the Desktop workspace contains the optimized website assets.
+Preview: `python -m http.server 4174 --bind 127.0.0.1 --directory website`, then open http://127.0.0.1:4174/. Serve the repository root on another port to verify the published entry.
 
 ## Motion and controls
 
-- Full-screen menu: a 360ms entrance, lightly staggered links, and a 230ms exit. Native modal semantics, Tab/Shift+Tab wrapping, Escape, focus restoration, and section focus after navigation remain intact. Rapid Escape/reopen cancels old animations.
-- Headline and image reveals: once per page visit, 14px of movement over 580ms. Content starts visible and stays readable if JavaScript fails. No scroll hijacking or parallax.
-- Field Notes keeps its original photo composition. Open any photo to enter the sliding viewer. Use previous/next buttons, Left/Right, Home/End, or a horizontal touch swipe. It wraps at either end, updates the caption/count, and exposes only the selected slide to assistive technology. No autoplay.
-- Reduced motion: immediate menu/gallery changes, no reveals or hover zoom, ordinary scrolling, and the still hero photo. Changing the preference during a menu transition releases the dialog correctly.
+- Wordmark, hero headline and invitation finish their entrance in 950ms, once per tab's browser session. No blocking overlay. Restored scroll positions skip the intro.
+- The transparent header slides away downward and returns upward; compact cream below the hero. Open menu or keyboard focus keeps it visible.
+- Headlines enter by actual rendered lines; section paragraphs enter together, once per visit. Resizing rebuilds lines without replaying. Content is visible before JavaScript and image dimensions reserve space.
+- Full-screen charcoal menu: 400ms entrance, sequenced links, 230ms exit. Keyboard focus wrapping, Escape, restoration and section focus remain intact. Rapid Escape/reopen cancels stale transitions.
+- The new photo strip moves at 14px/second only while visible and idle. Pause/play, previous/next, mouse drag, native mobile swipe, Left/Right and Home/End work. Hover, keyboard focus, drag, wheel input, open dialogs and hidden tabs pause movement. Loop duplicates are inert and hidden from assistive technology.
+- The original Field Notes composition and manual sliding photo dialog remain: buttons, Left/Right, Home/End, native swipe, wrapping, caption/count, Escape and focus restoration.
+- Reduced motion disables intro/reveals, transitions, hover zoom, strip autoplay and initial video requests. Manual strip/gallery controls remain. Preference changes during transitions/playback work.
+- Without JavaScript, copy, photos and anchor navigation remain visible and the strip scrolls natively.
 
-## Add the real hero film
+## Actual hero footage
 
-No video footage is supplied or fabricated. The current configuration is `heroVideoSrc: null`, which requests no video and keeps `assets/mountains.webp` unchanged.
+The owner-supplied `25 Stuart Falls-20261001T220732Z-1-001.zip` contains 28 MOV clips, overlooked in the original photo-only extraction. The hero is the real mountain scene from `Pancake 09-25 Stuart Falls/IMG_6085.MOV`, seconds 3–11. No stock footage or invented URL.
 
-1. Put the owner-supplied clip at `website/assets/hero-hike.mp4`. Prefer a short landscape H.264 MP4, roughly 8–15 seconds, trimmed for a quiet loop and compressed for mobile. WebM is also supported with a matching filename/configuration.
-2. In `website/content.js`, change:
+`assets/hero-hike.mp4`: eight seconds, 1280×720 H.264, 24fps, 907,575 bytes, no audio or source metadata, gentle loop crossfade, fast-start encoding. `content.js` uses `heroVideoSrc: 'assets/hero-hike.mp4'`. The original archive remains outside git. `qa/prepare_hero_video.py` records regeneration and uses `imageio-ffmpeg` as an offline tool only.
 
-   ```js
-   heroVideoSrc: 'assets/hero-hike.mp4',
-   ```
+The film autoplays muted, inline and looping, with an accessible play/pause control. It appears only after playback begins. The approved mountain photo stays beneath it and serves as poster. Failed media, reduced motion and Save-Data retain the photo. Autoplay blocking offers manual play. Offscreen, hidden-tab and dialog playback pauses; a user's deliberate pause is retained.
 
-3. Reload the local preview and check the real clip on desktop and a phone. Verify the crop, loop seam, download size, and play/pause control. These footage-specific checks are still pending because the clip does not exist yet.
+No footage is needed for this working loop. A future wider hiking/pancake montage can replace `website/assets/hero-hike.mp4`. Set `heroVideoSrc: null` for the original still with no video request. Only local `assets/` MP4/WebM paths are accepted. Review future footage crops/loops on physical phones.
 
-The film plays muted, inline, and loops, with an accessible keyboard-operable pause/play button. The existing mountain photo is both the poster and a separate fallback beneath the video. Video becomes visible only after playback starts; failed media leaves the photo visible. If autoplay is blocked, manual play is offered. Video pauses offscreen, in a hidden tab, or while a dialog is open; a visitor's deliberate pause is retained. Reduced-motion visitors get the photo and never request the clip on initial load. Only a local `assets/` MP4/WebM path is accepted.
+## Verification and publishing
 
-## Local verification
+Run `node website/qa/motion.test.cjs` with Playwright available for testing and the server running. `PANCAKE_TEST_URL` overrides the local URL. Results and before/after captures live in `qa/`. Checks cover desktop/touch mobile, reduced motion, session reloads, header focus/direction, reveals, strip pause/drag/swipe/keyboard, real video play/pause/loop, failed video, gallery/menu/dialogs, breakpoints, loaded media, overflow, console errors and no JavaScript.
 
-`qa/motion.test.cjs` contains browser regression checks; Playwright is a test tool only. With Playwright available to Node, run `node website/qa/motion.test.cjs` from the project root while the server runs. Set `PANCAKE_TEST_URL` to override the default localhost port 4174.
-
-This machine's bundled tools can run the suite without adding project dependencies:
+Bundled tools on this machine:
 
 ```powershell
 $env:NODE_PATH = 'C:/Users/carte/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules'
 & 'C:/Users/carte/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe' website/qa/motion.test.cjs
 ```
 
-The suite uses isolated headless Chrome, including native touch input and reduced-motion emulation. Results are saved in `qa/test-results.json`. Before/after desktop and mobile captures and gallery screenshots are in `qa/`. Browser-emulated mobile checks do not replace final review of owner-supplied footage on physical devices. Nothing is published or connected to payments.
+GitHub Pages publishes the root from `main`; keep `CNAME` as `pancak3boys.com`. See [deployment.md](deployment.md) for required public DNS corrections.
+
+October 24 remains tentative, pancakes free, and Instagram unchanged. RSVP, payments, checkout, email lists and partnership submissions still require genuine destinations and never pretend to submit data.

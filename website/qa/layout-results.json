@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:4174/",
+  "results": [
+    {
+      "width": 320,
+      "status": "passed",
+      "checks": "Original heading heights preserved with/without JavaScript; initial cumulative layout shift is zero"
+    },
+    {
+      "width": 390,
+      "status": "passed",
+      "checks": "Original heading heights preserved with/without JavaScript; initial cumulative layout shift is zero"
+    },
+    {
+      "width": 768,
+      "status": "passed",
+      "checks": "Original heading heights preserved with/without JavaScript; initial cumulative layout shift is zero"
+    },
+    {
+      "width": 1024,
+      "status": "passed",
+      "checks": "Original heading heights preserved with/without JavaScript; initial cumulative layout shift is zero"
+    },
+    {
+      "width": 1440,
+      "status": "passed",
+      "checks": "Original heading heights preserved with/without JavaScript; initial cumulative layout shift is zero"
+    }
+  ]
+}

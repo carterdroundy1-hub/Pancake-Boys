@@ -1,4 +1,5 @@
 const config = window.PANCAKE_BOYS || {};
+const mediaBase = new URL('.', document.currentScript?.src || document.baseURI);
 const header = document.querySelector('.header');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');
@@ -16,6 +17,7 @@ function animate(element, frames, options) {
 }
 function openDialog(dialog, trigger) {
   if (dialog.open) return;
+  header.classList.remove('is-hidden');
   dialogStates.set(dialog, { trigger: trigger || document.activeElement, closing: false });
   dialog.showModal();
   dialog.scrollTop = 0;
@@ -26,10 +28,10 @@ function openDialog(dialog, trigger) {
   syncHeroVideo();
   if (dialog === menu) {
     menuToggle.setAttribute('aria-expanded', 'true');
-    animate(menu, [{ opacity: .25, transform: 'translateY(-24px)' }, { opacity: 1, transform: 'none' }], { duration: 360, easing: 'cubic-bezier(.22,1,.36,1)' });
+    animate(menu, [{ opacity: .8, transform: 'translateY(-32px)' }, { opacity: 1, transform: 'none' }], { duration: 400, easing: 'cubic-bezier(.22,1,.36,1)' });
     menu.querySelectorAll('nav a').forEach((link, index) => animate(link,
       [{ opacity: .35, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }],
-      { duration: 280, delay: 45 + index * 35, easing: 'ease-out', fill: 'backwards' }));
+      { duration: 360, delay: 70 + index * 55, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
   }
 }
 function closeDialog(dialog, afterClose) {
@@ -133,8 +135,51 @@ galleryViewport.addEventListener('pointerup', e => {
 galleryViewport.addEventListener('pointercancel', () => { swipe = null; });
 photoDialog.addEventListener('close', () => { swipe = null; });
 
-// Animate only when content enters the viewport. Nothing starts hidden, so
-// content stays readable without JavaScript or IntersectionObserver support.
+// A short first-visit entrance, never a loading screen or navigation delay.
+function heroEntrance() {
+  let seen = false;
+  try { seen = sessionStorage.getItem('pancake-boys-intro') === 'seen'; sessionStorage.setItem('pancake-boys-intro', 'seen'); } catch { /* Storage can be disabled; the page still works. */ }
+  document.documentElement.dataset.intro = reducedMotion.matches ? 'reduced' : seen ? 'seen' : 'played';
+  if (seen || reducedMotion.matches || window.scrollY > 100) return;
+  const rise = [{ opacity: .65, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }];
+  animate(header.querySelector('.brand'), [{ opacity: .6, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], { duration: 300, easing: 'ease-out' });
+  animate(document.querySelector('#hero-title'), rise, { duration: 520, delay: 180, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+  animate(document.querySelector('.hero-intro'), rise, { duration: 420, delay: 320, easing: 'ease-out', fill: 'backwards' });
+  animate(document.querySelector('.hero-baseline'), rise, { duration: 450, delay: 500, easing: 'ease-out', fill: 'backwards' });
+}
+
+// Measure the existing rendered lines instead of changing the approved breaks.
+// Rebuild on resize, using the original text, without replaying the entrance.
+const headlineOriginals = new Map([...document.querySelectorAll('main h2')].map(heading => [heading, heading.innerHTML]));
+function splitHeadlines() {
+  headlineOriginals.forEach((html, heading) => {
+    heading.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+    heading.innerHTML = html;
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const lines = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      for (const word of node.textContent.matchAll(/\S+/g)) {
+        const range = document.createRange();
+        range.setStart(node, word.index); range.setEnd(node, word.index + word[0].length);
+        const top = range.getBoundingClientRect().top;
+        let line = lines[lines.length - 1];
+        if (!line || Math.abs(top - line.top) > 2) { line = { top, words: [] }; lines.push(line); }
+        line.words.push(word[0]);
+      }
+    }
+    heading.replaceChildren();
+    lines.forEach((line, index) => {
+      if (index) heading.append(document.createTextNode(' '));
+      const span = document.createElement('span'); span.className = 'headline-line'; span.textContent = line.words.join(' ');
+      heading.append(span);
+    });
+  });
+}
+let resizeFrame;
+window.addEventListener('resize', () => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(splitHeadlines); });
+
+// Nothing starts hidden. Animation failure leaves all copy and images readable.
 let revealObserver;
 function prepareReveals() {
   if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
@@ -143,12 +188,116 @@ function prepareReveals() {
     revealObserver.unobserve(entry.target);
     if (entry.target.dataset.revealed) return;
     entry.target.dataset.revealed = 'true';
-    animate(entry.target, [{ opacity: .65, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 580, easing: 'cubic-bezier(.22,1,.36,1)' });
+    if (entry.target.matches('h2')) {
+      const section = entry.target.closest('section');
+      section.dataset.revealed = 'true';
+      entry.target.querySelectorAll('.headline-line').forEach((line, index) => animate(line,
+        [{ opacity: .65, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 600, delay: index * 65, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
+      section.querySelectorAll('p:not(.eyebrow)').forEach(paragraph => animate(paragraph,
+        [{ opacity: .75, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 480, delay: 140, easing: 'ease-out', fill: 'backwards' }));
+    } else animate(entry.target, [{ opacity: .8, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 580, easing: 'cubic-bezier(.22,1,.36,1)' });
   }), { threshold: .12 });
   document.querySelectorAll('main h2, .story-photo, .photo-grid figure, .merch-image').forEach(element => {
     if (!element.dataset.revealed) revealObserver.observe(element);
   });
 }
+
+// A passive scroll listener: normal page scrolling, with a small direction threshold.
+let lastScrollY = Math.max(0, window.scrollY), scrollTravel = 0, scrollFrame = null;
+function updateHeader() {
+  scrollFrame = null;
+  const position = Math.max(0, window.scrollY), delta = position - lastScrollY;
+  if (Math.sign(delta) !== Math.sign(scrollTravel)) scrollTravel = 0;
+  scrollTravel += delta;
+  if (position < 140 || menu.open || header.contains(document.activeElement)) header.classList.remove('is-hidden');
+  else if (scrollTravel > 20) header.classList.add('is-hidden');
+  else if (scrollTravel < -12) header.classList.remove('is-hidden');
+  lastScrollY = position;
+}
+window.addEventListener('scroll', () => { if (scrollFrame === null) scrollFrame = requestAnimationFrame(updateHeader); }, { passive: true });
+header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+
+// One slow moving strip, only while visible and idle. Native overflow is the
+// no-JavaScript and mobile swipe fallback; controls also work with reduced motion.
+const strip = document.querySelector('.trail-strip');
+const stripViewport = strip.querySelector('.trail-viewport');
+const stripGroup = strip.querySelector('.trail-group');
+const stripClone = stripGroup.cloneNode(true);
+stripClone.inert = true; stripClone.setAttribute('aria-hidden', 'true');
+strip.querySelector('.trail-track').append(stripClone);
+const stripPause = strip.querySelector('[data-strip-pause]');
+strip.querySelectorAll('button').forEach(button => { button.hidden = false; });
+let stripPaused = false, stripHover = false, stripFocus = false, stripVisible = false, stripDrag = null, stripCooldown = 0;
+let stripFrame = null, stripLastTime = 0, stripPosition = 0;
+function updateStripControl() {
+  stripPause.disabled = reducedMotion.matches;
+  stripPause.setAttribute('aria-pressed', String(stripPaused || reducedMotion.matches));
+  stripPause.setAttribute('aria-label', reducedMotion.matches ? 'Photo strip motion disabled by reduced-motion preference' : stripPaused ? 'Play hike photo strip' : 'Pause hike photo strip');
+  stripPause.innerHTML = reducedMotion.matches ? 'MOTION OFF' : stripPaused ? 'PLAY STRIP <span aria-hidden="true">▶</span>' : 'PAUSE STRIP <span aria-hidden="true">Ⅱ</span>';
+}
+function stripCanMove() {
+  return stripVisible && !stripPaused && !reducedMotion.matches && !stripHover && !stripFocus && !stripDrag && !document.hidden && !document.querySelector('dialog[open]');
+}
+function stripTick(time) {
+  stripFrame = null;
+  if (!stripCanMove()) { stripLastTime = 0; return; }
+  if (stripLastTime && time >= stripCooldown) {
+    const loopWidth = stripGroup.getBoundingClientRect().width;
+    stripPosition += Math.min(time - stripLastTime, 50) * .014;
+    if (loopWidth > 0 && stripPosition >= loopWidth) stripPosition -= loopWidth;
+    stripViewport.scrollLeft = stripPosition;
+  }
+  if (time < stripCooldown) stripPosition = stripViewport.scrollLeft;
+  stripLastTime = time;
+  stripFrame = requestAnimationFrame(stripTick);
+}
+function syncStrip() {
+  if (stripFrame !== null) { cancelAnimationFrame(stripFrame); stripFrame = null; }
+  stripLastTime = 0;
+  stripPosition = stripViewport.scrollLeft;
+  if (stripCanMove()) stripFrame = requestAnimationFrame(stripTick);
+}
+function moveStrip(distance) {
+  stripCooldown = performance.now() + 3000;
+  stripViewport.scrollBy({ left: distance, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+}
+stripPause.addEventListener('click', () => { stripPaused = !stripPaused; updateStripControl(); syncStrip(); });
+strip.querySelector('[data-strip-prev]').addEventListener('click', () => moveStrip(-stripViewport.clientWidth * .65));
+strip.querySelector('[data-strip-next]').addEventListener('click', () => moveStrip(stripViewport.clientWidth * .65));
+stripViewport.addEventListener('keydown', e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); moveStrip((e.key === 'ArrowLeft' ? -1 : 1) * stripViewport.clientWidth * .65); }
+  else if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); moveStrip((e.key === 'Home' ? 0 : stripGroup.offsetWidth - stripViewport.clientWidth) - stripViewport.scrollLeft); }
+});
+strip.addEventListener('mouseenter', () => { stripHover = true; syncStrip(); });
+strip.addEventListener('mouseleave', () => { stripHover = false; syncStrip(); });
+strip.addEventListener('focusin', () => { stripFocus = true; syncStrip(); });
+strip.addEventListener('focusout', () => queueMicrotask(() => { stripFocus = strip.contains(document.activeElement); syncStrip(); }));
+stripViewport.addEventListener('wheel', () => { stripCooldown = performance.now() + 3000; }, { passive: true });
+stripViewport.addEventListener('pointerdown', e => {
+  if (!e.isPrimary || e.button !== 0) return;
+  stripDrag = { id: e.pointerId, x: e.clientX, left: stripViewport.scrollLeft, manual: e.pointerType !== 'touch' };
+  if (stripDrag.manual) { stripViewport.setPointerCapture(e.pointerId); stripViewport.classList.add('dragging'); }
+  syncStrip();
+});
+stripViewport.addEventListener('pointermove', e => {
+  if (stripDrag?.manual && stripDrag.id === e.pointerId) stripViewport.scrollLeft = stripDrag.left + stripDrag.x - e.clientX;
+});
+function endStripDrag() {
+  stripDrag = null; stripViewport.classList.remove('dragging'); stripCooldown = performance.now() + 3000; syncStrip();
+}
+stripViewport.addEventListener('pointerup', endStripDrag);
+stripViewport.addEventListener('pointercancel', endStripDrag);
+stripViewport.addEventListener('lostpointercapture', endStripDrag);
+document.addEventListener('visibilitychange', syncStrip);
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialog.addEventListener('close', syncStrip);
+  new MutationObserver(syncStrip).observe(dialog, { attributes: true, attributeFilter: ['open'] });
+});
+if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => { stripVisible = entry.isIntersecting; syncStrip(); }, { threshold: .1 }).observe(strip);
+updateStripControl();
 
 const video = document.querySelector('.hero-video');
 const videoToggle = document.querySelector('.video-toggle');
@@ -159,11 +308,11 @@ function updateVideoControl() {
   videoToggle.innerHTML = video.paused ? 'PLAY FILM <span aria-hidden="true">▶</span>' : 'PAUSE FILM <span aria-hidden="true">Ⅱ</span>';
 }
 function syncHeroVideo() {
-  if (!videoSource || videoFailed || reducedMotion.matches) {
+  if (!videoSource || videoFailed || reducedMotion.matches || navigator.connection?.saveData) {
     video.pause(); video.hidden = true; videoToggle.hidden = true;
     return;
   }
-  if (!video.getAttribute('src')) { video.muted = true; video.src = videoSource; }
+  if (!video.getAttribute('src')) { video.muted = true; video.src = new URL(videoSource, mediaBase).href; }
   if (!heroVisible || document.hidden || document.body.classList.contains('dialog-open') || userPaused) video.pause();
   else video.play().catch(() => {
     // Autoplay may be blocked. Keep the mountain photo and offer manual play.
@@ -171,7 +320,7 @@ function syncHeroVideo() {
   });
 }
 video.addEventListener('playing', () => {
-  if (reducedMotion.matches) { syncHeroVideo(); return; }
+  if (reducedMotion.matches || !heroVisible || document.hidden || document.querySelector('dialog[open]') || userPaused) { syncHeroVideo(); return; }
   video.hidden = false; videoToggle.hidden = false; updateVideoControl();
 });
 video.addEventListener('pause', updateVideoControl);
@@ -189,7 +338,10 @@ reducedMotion.addEventListener('change', () => {
   if (reducedMotion.matches) motion.forEach(animation => animation.finish());
   else prepareReveals();
   syncHeroVideo();
+  updateStripControl(); syncStrip();
 });
+splitHeadlines();
+heroEntrance();
 prepareReveals();
 syncHeroVideo();
 function safeUrl(value) { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : null; } catch { return null; } }

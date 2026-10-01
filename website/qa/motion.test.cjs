@@ -4,7 +4,9 @@ const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { checkCinematic } = require('./cinematic-checks.cjs');
 const base = process.env.PANCAKE_TEST_URL || 'http://127.0.0.1:4174/';
+const output = process.env.PANCAKE_TEST_OUTPUT || __dirname;
 const results = [];
 const check = (condition, message) => assert.ok(condition, message);
 
@@ -28,7 +30,9 @@ async function swipe(page, direction, vertical = false) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+  await fs.mkdir(output, { recursive: true });
+  const browser = await chromium.launch({ channel: 'chrome', headless: true,
+    args: process.env.PANCAKE_ORIGIN_IP ? [`--host-resolver-rules=MAP pancak3boys.com ${process.env.PANCAKE_ORIGIN_IP}`] : [] });
   try {
     for (const mobile of [false, true]) for (const reduced of [false, true]) {
       const name = `${mobile ? 'mobile' : 'desktop'}-${reduced ? 'reduced' : 'motion'}`;
@@ -42,20 +46,31 @@ async function swipe(page, direction, vertical = false) {
       page.on('response', response => { if (response.status() >= 400) badResponses.push(response.url()); });
       page.on('request', request => { if (/\.(mp4|webm)(\?|$)/.test(request.url())) videoRequests.push(request.url()); });
       await page.goto(base);
+      check((await page.locator('html').getAttribute('data-intro')) === (reduced ? 'reduced' : 'played'), 'First-session intro state');
       await noOverflow(page);
       check(await page.locator('.hero-image').evaluate(image => image.complete && image.naturalWidth > 0), 'Hero photo loaded');
-      check(await page.locator('.hero-video').evaluate(video => video.hidden && !video.getAttribute('src')), 'No clip configured: still image and no video request');
-      check(!(await page.locator('.video-toggle').isVisible()), 'No unused video control');
+      if (reduced) {
+        check(await page.locator('.hero-video').evaluate(video => video.hidden && !video.getAttribute('src')), 'Reduced motion keeps still image and requests no video');
+        check(!(await page.locator('.video-toggle').isVisible()), 'No reduced-motion video control');
+      } else {
+        await page.waitForFunction(() => !document.querySelector('.hero-video').hidden && document.querySelector('.hero-video').currentTime > 0);
+        check(await page.locator('.hero-video').evaluate(video => video.autoplay && video.muted && video.loop && video.playsInline), 'Actual silent inline looping footage plays');
+        await page.getByRole('button', { name: 'Pause background video' }).click();
+        check(await page.locator('.hero-video').evaluate(video => video.paused), 'Video pause works');
+        await page.getByRole('button', { name: 'Play background video' }).click();
+        await page.waitForFunction(() => !document.querySelector('.hero-video').paused);
+      }
       check((await page.locator('#event-status').textContent()).includes('TENTATIVE'), 'Hike stays tentative');
       check((await page.locator('.instagram-link').first().getAttribute('href')).endsWith('/pancak3boys/'), 'Instagram preserved');
 
+      await page.locator('.menu-toggle').evaluate(button => button.addEventListener('click', () => { window.__menuEntranceCount = document.querySelector('#menu-dialog').getAnimations({ subtree: true }).length; }, { once: true }));
       await page.getByRole('button', { name: 'Open menu', exact: true }).click();
       const menu = page.locator('#menu-dialog');
       check(await menu.evaluate(dialog => dialog.open), 'Menu opened');
       check(await page.locator('main').evaluate(main => main.inert), 'Background inert while menu is open');
       check((await page.locator('.menu-toggle').getAttribute('aria-expanded')) === 'true', 'Expanded state');
       if (reduced) check(await menu.evaluate(dialog => dialog.getAnimations({ subtree: true }).length === 0), 'No reduced-motion menu animations');
-      else check(await menu.evaluate(dialog => dialog.getAnimations({ subtree: true }).length > 0), 'Menu entrance and stagger animate');
+      else check(await page.evaluate(() => window.__menuEntranceCount > 0), 'Menu entrance and stagger animate');
       await settled(page);
       for (let i = 0; i < 9; i++) {
         await page.keyboard.press('Tab');
@@ -143,10 +158,11 @@ async function swipe(page, direction, vertical = false) {
         await image.scrollIntoViewIfNeeded();
         await page.waitForFunction(src => [...document.querySelectorAll('main img')].some(image => image.src === src && image.complete && image.naturalWidth > 0), await image.getAttribute('src').then(src => new URL(src, base).href));
       }
-      check(videoRequests.length === 0, 'No missing clip requested');
+      check(reduced ? videoRequests.length === 0 : videoRequests.length > 0, 'Expected real-video/reduced-motion media requests');
+      await checkCinematic(page, { mobile, reduced, output });
       check(errors.length === 0, `No console/runtime errors: ${errors.join('; ')}`);
       check(badResponses.length === 0, `No broken resources: ${badResponses.join('; ')}`);
-      results.push({ name, status: 'passed', checks: 'layout, media, menu animations/early exit/trap/Escape/navigation, gallery buttons/keyboard/wrap/touch, dialogs/focus, once-only reveals, no video request/errors' });
+      results.push({ name, status: 'passed', checks: 'intro/session, header direction/focus, line reveals, strip pause/drag/swipe/keyboard, actual video/play/pause/loop, gallery/menu/dialogs, media/overflow/errors' });
       console.log(`Passed ${name}`);
       await context.close();
     }
@@ -179,7 +195,7 @@ async function swipe(page, direction, vertical = false) {
       let requested = false;
       await page.route('**/content.js', async route => {
         const response = await route.fetch();
-        await route.fulfill({ response, body: (await response.text()).replace('heroVideoSrc: null', "heroVideoSrc: 'assets/hero-hike.mp4'") });
+        await route.fulfill({ response, body: (await response.text()).replace(/heroVideoSrc: [^,\n]+/, "heroVideoSrc: 'assets/hero-hike.mp4'") });
       });
       await page.route('**/assets/hero-hike.mp4', async route => { requested = true; await route.abort(); });
       await page.goto(base);
@@ -200,7 +216,7 @@ async function swipe(page, direction, vertical = false) {
     check(await still.locator('h2').evaluateAll(headings => headings.every(h => getComputedStyle(h).opacity === '1')), 'Headlines never hidden without JavaScript');
     await noJS.close();
     results.push({ name: 'no-javascript-still-content', status: 'passed' });
-    await fs.writeFile(path.join(__dirname, 'test-results.json'), JSON.stringify({ testedAt: new Date().toISOString(), results }, null, 2) + '\n');
+    await fs.writeFile(path.join(output, 'test-results.json'), JSON.stringify({ testedAt: new Date().toISOString(), url: base, dnsOverride: process.env.PANCAKE_ORIGIN_IP || null, results }, null, 2) + '\n');
     console.log(JSON.stringify(results, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

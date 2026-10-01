@@ -1,0 +1,71 @@
+{
+  "url": "http://127.0.0.1:4176/",
+  "results": [
+    {
+      "path": "website/app.js",
+      "status": 200,
+      "bytes": 22087,
+      "type": "text/javascript"
+    },
+    {
+      "path": "website/assets/apron.webp",
+      "status": 200,
+      "bytes": 162900,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/assets/batter.webp",
+      "status": 200,
+      "bytes": 51078,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/assets/hero-hike.mp4",
+      "status": 200,
+      "bytes": 907575,
+      "type": "video/mp4"
+    },
+    {
+      "path": "website/assets/mountains.webp",
+      "status": 200,
+      "bytes": 609858,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/assets/our-story.pdf",
+      "status": 200,
+      "bytes": 768778,
+      "type": "application/pdf"
+    },
+    {
+      "path": "website/assets/pancakes.webp",
+      "status": 200,
+      "bytes": 58898,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/assets/the-boys.webp",
+      "status": 200,
+      "bytes": 205014,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/assets/the-gathering.webp",
+      "status": 200,
+      "bytes": 286838,
+      "type": "application/octet-stream"
+    },
+    {
+      "path": "website/content.js",
+      "status": 200,
+      "bytes": 841,
+      "type": "text/javascript"
+    },
+    {
+      "path": "website/styles.css",
+      "status": 200,
+      "bytes": 14520,
+      "type": "text/css"
+    }
+  ]
+}

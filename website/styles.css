@@ -21,3 +21,27 @@
 .photo-dialog #gallery-hint{margin-top:14px;font-size:10px;letter-spacing:.3px;text-align:center;color:#cbcfc3}
 @media(max-width:760px){.video-toggle{right:6%;top:180px}.gallery-viewport{height:58svh}.gallery-bottom{gap:10px}.photo-dialog #photo-caption{font-size:12px}.photo-dialog #gallery-hint{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.photo-button:hover img{transform:none}.hero-video,.video-toggle{display:none!important}}
+
+/* Cinematic motion keeps the established type, palette and photo composition. */
+.header{transition:transform 280ms cubic-bezier(.22,1,.36,1),background 200ms,color 200ms}
+.header.is-hidden{transform:translateY(-110%);pointer-events:none}
+.header:focus-within{transform:none;pointer-events:auto}
+.menu-dialog{background:var(--ink);color:var(--paper)}
+.menu-dialog nav a{border-color:#ffffff35}
+.menu-dialog nav a:hover{color:#c7a17c}
+.headline-line{display:block}
+.trail-strip{padding:34px 0 40px;background:var(--paper);overflow:hidden}
+.trail-strip-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 6% 22px;font-size:10px;font-weight:700;letter-spacing:1px}
+.trail-strip-controls{display:flex;align-items:center;gap:14px}
+.trail-strip-head{min-height:66px}
+.trail-strip-controls button{min-height:44px;min-width:44px;background:transparent;border-bottom:1px solid var(--line);font-size:10px;font-weight:700;letter-spacing:.7px;padding:8px}
+.trail-strip-controls button:disabled{opacity:.65;cursor:default}
+.trail-viewport{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y pinch-zoom}
+.trail-viewport::-webkit-scrollbar{display:none}
+.trail-viewport.dragging{cursor:grabbing;user-select:none}
+.trail-viewport:focus-visible{outline:2px solid var(--brown);outline-offset:-3px}
+.trail-track{display:flex;width:max-content}
+.trail-group{display:flex;gap:22px;padding-right:22px;flex-shrink:0}
+.trail-group img{flex:0 0 340px;width:340px;height:240px;object-fit:cover;user-select:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:760px){.trail-strip{padding:24px 0 30px}.trail-strip-head{min-height:60px;padding:0 7% 16px;font-size:8px;letter-spacing:.5px}.trail-strip-controls{gap:5px}.trail-strip-controls button{font-size:8px;padding:6px;min-width:44px}.trail-group{gap:14px;padding-right:14px}.trail-group img{flex-basis:270px;width:270px;height:200px}}

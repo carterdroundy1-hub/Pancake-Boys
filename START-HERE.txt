@@ -1,7 +1,7 @@
 PANCAKE BOYS — VS CODE HANDOFF
 
 This is a working website, not just an image mockup. Continue the existing files in website/.
-Open C:\Users\carte\Downloads\Pancake Boys as the VS Code project folder.
+Open C:\Users\carte\OneDrive\Desktop\Pancake Boys as the VS Code project folder.
 
 APPROVED DIRECTION
 Clean, sleek, bold, spacious, and personal. An outdoor community brand with the confidence of a clothing label. The owner loves the current draft; evolve it instead of redesigning it.
@@ -29,7 +29,7 @@ website/app.js — accessible dialogs, navigation, gallery, and event rendering
 website/content.js — Instagram and tentative event configuration
 website/assets/ — six optimized real photographs plus story PDF
 website/references/ — desktop homepage, desktop menu, mobile homepage screenshots
-Photos/ — 63 original JPEG photographs; no video clips were found here
+Original photographs remain in C:\Users\carte\Downloads\Pancake Boys\Photos; no video clips were found there
 Pancake Boys - Website Proposal.pdf — approved design proposal
 Pancake Boys - Our Story.pdf — lightly edited founder story
 Vision and constraints.pdf — source vision document
@@ -40,9 +40,9 @@ RSVPs, payments, partnership submissions, and Shopify are not connected. Nothing
 Checked desktop and mobile, including menu navigation, dialog closing/Escape, focus restoration, image loading, horizontal overflow, and JavaScript syntax.
 
 RUN LOCALLY
-From the project root: python -m http.server 4173 --bind 127.0.0.1 --directory website
-Preview: http://127.0.0.1:4173/
-If port 4173 is already serving this site, reuse it; don't stop an unrelated process.
+From the project root: python -m http.server 4174 --bind 127.0.0.1 --directory website
+Preview: http://127.0.0.1:4174/
+Port 4173 was serving the older Downloads copy. Use 4174 for this Desktop workspace; don't stop an unrelated process.
 Bundled Python, if needed: C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
 
 PROMPT TO SEND
@@ -56,3 +56,14 @@ Keep the current lightweight HTML/CSS/JavaScript setup unless a concrete require
 
 WORKFLOW
 Use one agent to edit at a time. Codex can implement this motion pass. Claude Code can then provide a read-only second opinion on motion, accessibility, and visual consistency if desired. Do not have both changing the same files simultaneously.
+
+MOTION PASS STATUS / OCTOBER 1, 2026
+Implemented locally in the Desktop workspace, preserving the approved design, photos, typography, colors, and copy.
+Complete: menu entrance/exit and staggered links; once-only headline/photo reveals; sliding photo-dialog gallery with previous/next, Left/Right, Home/End, native touch swipes, wrapping, caption/count announcements, Escape, and focus restoration.
+Reduced-motion visitors receive immediate transitions and the hero still image. Preference changes during animation are handled.
+Browser checks passed on desktop and emulated touch/mobile, with and without reduced motion, plus narrow/tablet/landscape sizes. Fixed keyboard focus wrapping and a rapid-Escape/reopen animation race.
+No horizontal overflow, broken default media, or console/runtime errors were found.
+Hero film: place the real owner-supplied clip at website/assets/hero-hike.mp4 and set heroVideoSrc in website/content.js to 'assets/hero-hike.mp4'. Until then it stays null and makes no video request.
+Playback with actual footage remains pending. No footage was downloaded or fabricated. The photo fallback and missing-clip/reduced-motion paths are verified.
+Read website/README.md for the film handoff and test command. See website/qa/test-results.json and before/after screenshots in website/qa/.
+Publishing remains with the owner. No deployment, payment integration, or fake submissions were added.

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Good hikes. Free pancakes. Come hungry. Pancake Boys brings people together on Utah trails.">
+  <meta name="theme-color" content="#f1eee7"><title>Pancake Boys — Come hungry.</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css"><script src="content.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header class="header" id="header">
+    <a class="brand" href="#home" aria-label="Pancake Boys home">PANCAKE<br>BOYS</a>
+    <button class="menu-toggle" aria-label="Open menu" aria-haspopup="dialog" aria-controls="menu-dialog" aria-expanded="false"><span>MENU</span><span class="menu-lines" aria-hidden="true"></span></button>
+  </header>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <img class="hero-image" src="assets/mountains.webp" alt="A mountain stream winding through the trees below a Utah ridgeline" fetchpriority="high">
+      <video class="hero-video" muted playsinline loop preload="none" poster="assets/mountains.webp" aria-hidden="true" hidden></video>
+      <button class="video-toggle" aria-label="Pause background video" hidden>PAUSE FILM <span aria-hidden="true">Ⅱ</span></button>
+      <div class="hero-shade"></div>
+      <div class="hero-top"><span>OUT OF THE KITCHEN.<br>INTO THE MOUNTAINS.</span><span>UTAH, USA<br>EVERYONE'S INVITED.</span></div>
+      <div class="hero-bottom"><p class="hero-intro">A good reason to get outside.</p><h1 id="hero-title">PANCAKE BOYS</h1><div class="hero-baseline"><p>Good hikes. Free pancakes. Come hungry.</p><a class="link-button light" href="#next-hike">JOIN THE NEXT HIKE <span aria-hidden="true">↗</span></a></div></div>
+      <a class="scroll-note" href="#next-hike" aria-label="Scroll to the next hike">KEEP GOING <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="next section" id="next-hike" aria-labelledby="next-title">
+      <div class="section-label"><span>01 / THE NEXT ONE</span><span>FREE PANCAKES. ALWAYS.</span></div>
+      <div class="next-layout"><h2 id="next-title">THE GRIDDLE<br>IS COMING<br>BACK OUT.</h2><div class="next-info">
+        <p class="eyebrow" id="event-status">ON THE HORIZON</p><h3 id="event-title">Next hike coming soon.</h3><p id="event-description">We're working on the next excuse to carry a griddle up a mountain. The time, trail, and meeting spot will be posted here when they're set.</p>
+        <dl id="event-details" hidden></dl><a id="event-directions" class="text-link" hidden>GET DIRECTIONS ↗</a>
+        <a class="text-link instagram-link" hidden>FOLLOW FOR THE NEXT HIKE <span aria-hidden="true">↗</span></a>
+        <div class="bring"><span class="eyebrow">WHEN IT'S TIME, BRING</span><p>Water. Layers. Good shoes.<br>A friend, if you want. An appetite, definitely.</p></div>
+      </div></div>
+    </section>
+
+    <section class="story section" id="our-story" aria-labelledby="story-title">
+      <div class="section-label"><span>02 / HOW WE GOT HERE</span><span>A GRIDDLE & A QUESTIONABLE IDEA</span></div>
+      <div class="story-layout"><div class="story-copy"><h2 id="story-title">IT STARTED<br>WITH A BAD<br>BUSINESS IDEA.</h2><p>Cold hikers. Hungry hikers. A mountain full of potential customers. We thought we'd struck gold.</p><p>Then we did the math. So we kept the good part: hiking with friends and making pancakes at the top.</p><p>A few hikes later, 50 people we'd never met showed up at Stewart Falls. Turns out, free pancakes are a pretty good way to make friends.</p><button class="text-link cream" data-dialog="story-dialog">THE WHOLE STORY <span aria-hidden="true">↗</span></button></div>
+      <figure class="story-photo"><img src="assets/the-boys.webp" alt="Two Pancake Boys smiling in their brown aprons with a red mixing bowl" loading="lazy"><figcaption>THE APRONS MADE IT OFFICIAL.</figcaption></figure></div>
+    </section>
+
+    <section class="field section" id="field-notes" aria-labelledby="field-title">
+      <div class="section-label"><span>03 / FIELD NOTES</span><span>GOOD COMPANY. BETTER BREAKFAST.</span></div>
+      <h2 id="field-title">COME FOR THE PANCAKES.<br>STAY FOR THE PEOPLE.</h2>
+      <div class="photo-grid"><figure class="photo-wide"><button class="photo-button" data-photo="assets/the-gathering.webp" data-caption="Stewart Falls. Fifty new faces. Plenty of pancakes." aria-label="View the Stewart Falls gathering photograph"><img src="assets/the-gathering.webp" alt="Hikers gathering together for pancakes beside the mountain stream" loading="lazy"></button><figcaption><span>STEWART FALLS</span><span>FIFTY NEW FACES.</span></figcaption></figure>
+      <figure class="photo-tall"><button class="photo-button" data-photo="assets/batter.webp" data-caption="The breakfast part of the hike." aria-label="View pancake batter pouring onto the griddle"><img src="assets/batter.webp" alt="Pancake batter pouring from the red bowl onto a portable griddle" loading="lazy"></button><figcaption>THE BREAKFAST PART OF THE HIKE.</figcaption></figure>
+      <figure class="photo-detail"><button class="photo-button" data-photo="assets/pancakes.webp" data-caption="Made on a rock. Best eaten outside." aria-label="View pancakes cooking outdoors"><img src="assets/pancakes.webp" alt="Golden pancakes cooking on the outdoor griddle" loading="lazy"></button><figcaption>BEST EATEN OUTSIDE.</figcaption></figure>
+      <div class="field-note"><span class="eyebrow">A NOTE FROM THE TRAIL</span><p>We want to make tons of pancakes.<br>It brings us joy.</p><span class="handwritten">See you out there.</span></div></div>
+    </section>
+
+    <section class="merch" id="merch" aria-labelledby="merch-title"><div class="merch-image"><img src="assets/apron.webp" alt="A smiling Pancake Boy wearing the custom brown apron and holding a plate of pancakes" loading="lazy"></div><div class="merch-copy"><span class="eyebrow">04 / SOMETHING WORTH WEARING</span><h2 id="merch-title">OFF THE TRAIL.<br>STILL ONE<br>OF THE BOYS.</h2><p>It started with custom aprons. Something you can take home is next.</p><span class="coming-soon">MERCH IS IN THE WORKS</span><p class="small-note">When it's ready, you'll find it right here.</p></div></section>
+
+    <section class="support section" id="support" aria-labelledby="support-title"><div class="section-label"><span>05 / KEEP IT GOING</span><span>MORE PEOPLE. MORE PANCAKES.</span></div><div class="support-layout"><h2 id="support-title">GOOD THINGS<br>TAKE A LITTLE<br>BATTER.</h2><div><p>The pancakes stay free. Support helps us bring the mix, carry the gear, and keep showing up.</p><p>We're building ways to help through merch, contributions, and partnerships. The goal is simple: more people outside, together.</p><button class="text-link" data-dialog="support-dialog">HELP MAKE THE NEXT ONE HAPPEN <span aria-hidden="true">↗</span></button></div></div></section>
+  </main>
+  <footer class="footer"><div class="footer-top"><span>COME HUNGRY. LEAVE WITH FRIENDS.</span><a class="instagram-link" hidden>INSTAGRAM ↗</a></div><a class="footer-wordmark" href="#home" aria-label="Back to the top">PANCAKE BOYS</a><div class="footer-bottom"><span>MADE FOR GETTING OUTSIDE.</span><a href="#next-hike">SEE YOU ON THE TRAIL ↗</a><span>UTAH, USA</span></div></footer>
+
+  <dialog id="menu-dialog" class="menu-dialog" aria-label="Main navigation"><div class="menu-head"><span class="brand">PANCAKE<br>BOYS</span><button class="close-button" data-close aria-label="Close menu">CLOSE <span aria-hidden="true">×</span></button></div><nav aria-label="Main"><a href="#next-hike"><span>01</span> NEXT HIKE <i>↗</i></a><a href="#our-story"><span>02</span> OUR STORY <i>↗</i></a><a href="#field-notes"><span>03</span> FIELD NOTES <i>↗</i></a><a href="#merch"><span>04</span> MERCH <i>↗</i></a><a href="#support"><span>05</span> KEEP IT GOING <i>↗</i></a></nav><div class="menu-foot"><span>GOOD HIKES. FREE PANCAKES.</span><a class="instagram-link" hidden>INSTAGRAM ↗</a><a class="contact-link" hidden>SAY HELLO ↗</a></div></dialog>
+  <dialog id="story-dialog" class="content-dialog" aria-labelledby="full-story-title"><button class="close-button" data-close aria-label="Close story">CLOSE <span aria-hidden="true">×</span></button><p class="eyebrow">THE PANCAKE BOYS ORIGIN STORY</p><h2 id="full-story-title">LET ME TELL<br>YOU A STORY.</h2><p>Conor and I hiked Timpanogos a year ago. Over a thousand people were up there, freezing their butts off, clinging to each other for warmth, and starving.</p><p>A year later, on Gobblers Knob, we thought we'd stumbled on a genius business idea. Pack up hoodies. Sell pancakes for $5 each. “This is genius.”</p><p>But the logistics didn't really work. How would people pay us at the top of a mountain? And did we want to hike 7.5 miles every weekend to go rip people off?</p><p>We ditched the idea, but not entirely. Pancake mix isn't that expensive, and pancakes at the top of Timp sounded fun. We got a group together, made custom aprons, did a photo shoot, and went for it.</p><p>The turnout was so good, we did another hike. After Squaw Peak, our system was dialed. A reel for the next hike got almost 30,000 views and over 650 shares. Fifty people we didn't even know showed up for pancakes at Stewart Falls.</p><p>That's when we realized this could be bigger than casual pancakes on mountains. We want to keep hiking, bring as many people as we can, and make tons of pancakes. It brings us joy.</p><p>Revenue might help us keep it going. Just not through selling pancakes.</p><a class="text-link" href="assets/our-story.pdf" target="_blank" rel="noopener">READ THE ORIGINAL STORY PDF ↗</a></dialog>
+  <dialog id="support-dialog" class="content-dialog" aria-labelledby="help-title"><button class="close-button" data-close aria-label="Close support information">CLOSE <span aria-hidden="true">×</span></button><p class="eyebrow">KEEP THE PANCAKES COMING</p><h2 id="help-title">LET'S MAKE<br>MORE OF THIS.</h2><p>Supplies, filming, and an extra pair of hands all help us bring more people together.</p><p>We're getting merch, contributions, and partnerships ready. Until then, bringing a friend to a hike is a pretty great place to start.</p><a class="contact-link text-link" hidden>LET'S TALK PARTNERSHIPS ↗</a><a class="instagram-link text-link" hidden>FIND US ON INSTAGRAM ↗</a></dialog>
+  <dialog id="photo-dialog" class="photo-dialog" aria-label="Trail photographs" aria-describedby="gallery-hint"><button class="close-button" data-close aria-label="Close photograph">CLOSE <span aria-hidden="true">×</span></button><div class="gallery-viewport"><div class="gallery-track"></div></div><div class="gallery-bottom"><button class="gallery-control" data-gallery-prev aria-label="Previous photograph">←</button><div class="gallery-description" role="status" aria-live="polite" aria-atomic="true"><span id="photo-count"></span><p id="photo-caption"></p></div><button class="gallery-control" data-gallery-next aria-label="Next photograph">→</button></div><p id="gallery-hint">Use the arrows, left/right keys, or swipe to browse.</p></dialog>
+</body></html>

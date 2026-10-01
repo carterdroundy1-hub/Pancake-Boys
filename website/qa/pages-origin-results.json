@@ -1,0 +1,39 @@
+{
+  "testedAt": "2026-10-01T23:48:20.587Z",
+  "url": "http://pancak3boys.com/?v=788f294",
+  "dnsOverride": "185.199.108.153",
+  "results": [
+    {
+      "name": "desktop-motion",
+      "status": "passed",
+      "checks": "intro/session, header direction/focus, line reveals, strip pause/drag/swipe/keyboard, actual video/play/pause/loop, gallery/menu/dialogs, media/overflow/errors"
+    },
+    {
+      "name": "desktop-reduced",
+      "status": "passed",
+      "checks": "intro/session, header direction/focus, line reveals, strip pause/drag/swipe/keyboard, actual video/play/pause/loop, gallery/menu/dialogs, media/overflow/errors"
+    },
+    {
+      "name": "mobile-motion",
+      "status": "passed",
+      "checks": "intro/session, header direction/focus, line reveals, strip pause/drag/swipe/keyboard, actual video/play/pause/loop, gallery/menu/dialogs, media/overflow/errors"
+    },
+    {
+      "name": "mobile-reduced",
+      "status": "passed",
+      "checks": "intro/session, header direction/focus, line reveals, strip pause/drag/swipe/keyboard, actual video/play/pause/loop, gallery/menu/dialogs, media/overflow/errors"
+    },
+    {
+      "name": "preference-change-and-breakpoints",
+      "status": "passed"
+    },
+    {
+      "name": "configured-clip-failure-and-reduced-motion",
+      "status": "passed"
+    },
+    {
+      "name": "no-javascript-still-content",
+      "status": "passed"
+    }
+  ]
+}

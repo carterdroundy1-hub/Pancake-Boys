@@ -1,0 +1,67 @@
+{
+  "commit": "788f294",
+  "run": {
+    "head_sha": "788f294e7e85d7c1a2e5fac2c7c812d08ece88e2",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/carterdroundy1-hub/Pancake-Boys/actions/runs/36942371622"
+  },
+  "origin": "HTTP Pages origin with temporary DNS override; public GoDaddy DNS still needs correction",
+  "media": [
+    {
+      "path": "website/app.js",
+      "bytes": 22087,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/apron.webp",
+      "bytes": 162900,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/batter.webp",
+      "bytes": 51078,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/hero-hike.mp4",
+      "bytes": 907575,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/mountains.webp",
+      "bytes": 609858,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/our-story.pdf",
+      "bytes": 768778,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/pancakes.webp",
+      "bytes": 58898,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/the-boys.webp",
+      "bytes": 205014,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/assets/the-gathering.webp",
+      "bytes": 286838,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/content.js",
+      "bytes": 841,
+      "matchesCommittedFile": true
+    },
+    {
+      "path": "website/styles.css",
+      "bytes": 14519,
+      "matchesCommittedFile": true
+    }
+  ]
+}

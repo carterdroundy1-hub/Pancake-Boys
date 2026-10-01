@@ -129,7 +129,7 @@ async function swipe(page, direction, vertical = false) {
         check((await page.locator('#photo-count').textContent()) === '3 / 3', 'Vertical gestures do not change slides');
       }
       await noOverflow(page);
-      await gallery.screenshot({ path: path.join(__dirname, `tested-gallery-${name}.png`) });
+      await gallery.screenshot({ path: path.join(output, `tested-gallery-${name}.png`) });
       await page.keyboard.press('Escape');
       await page.waitForFunction(() => document.activeElement.matches('[data-photo]'));
       await photos.nth(1).click();
@@ -194,8 +194,10 @@ async function swipe(page, direction, vertical = false) {
       const page = await context.newPage();
       let requested = false;
       await page.route('**/content.js', async route => {
-        const response = await route.fetch();
-        await route.fulfill({ response, body: (await response.text()).replace(/heroVideoSrc: [^,\n]+/, "heroVideoSrc: 'assets/hero-hike.mp4'") });
+        // Supply this isolated fixture directly: route.fetch runs outside Chrome's
+        // temporary DNS override and would otherwise fetch the GoDaddy response.
+        const body = await fs.readFile(path.join(__dirname, '../content.js'), 'utf8');
+        await route.fulfill({ contentType: 'text/javascript', body: body.replace(/heroVideoSrc: [^,\n]+/, "heroVideoSrc: 'assets/hero-hike.mp4'") });
       });
       await page.route('**/assets/hero-hike.mp4', async route => { requested = true; await route.abort(); });
       await page.goto(base);

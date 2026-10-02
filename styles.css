@@ -86,3 +86,24 @@
   .photo-grid figure:hover figcaption,.photo-grid figure:focus-within figcaption,.photo-grid .photo-button:hover img,
   .text-link:hover span,.text-link:focus-visible span,.link-button:hover span,.link-button:focus-visible span{transform:none}
 }
+
+/* More visible editorial movement, with stationary reading copy. */
+.motion-banner{position:relative;padding:26px 0 48px;background:var(--ink);color:var(--paper);overflow:hidden}
+.motion-banner-window{overflow:hidden}
+.motion-banner-track{display:flex;width:max-content;animation:trail-words 26s linear infinite;animation-play-state:paused}
+.motion-banner-track>span{flex-shrink:0;white-space:nowrap;font-family:var(--display);font-size:clamp(34px,5vw,72px);line-height:1.1;letter-spacing:-.02em}
+.motion-banner-track i{font-style:normal;color:#c7a17c}
+.motion-banner.ambient-visible .motion-banner-track{animation-play-state:running}
+.ambient-pause{position:absolute;right:4%;bottom:4px;background:transparent;color:var(--paper);min-height:44px;font-size:9px;font-weight:700;letter-spacing:1px}
+.ambient-pause:disabled{opacity:.65;cursor:default}
+.story-photo{overflow:hidden}
+.story-photo img{animation:trail-photo-breathe 10s ease-in-out infinite alternate;animation-play-state:paused;transform-origin:center}
+.story-photo.ambient-visible img{animation-play-state:running}
+.next .motion-accent.ambient-visible{animation:trail-phrase-drift 5s ease-in-out infinite}
+.ambient-paused .motion-banner-track,.ambient-paused .story-photo img,.ambient-paused .motion-accent,
+.ambient-background .motion-banner-track,.ambient-background .story-photo img,.ambient-background .motion-accent{animation-play-state:paused!important}
+@keyframes trail-words{to{transform:translateX(-50%)}}
+@keyframes trail-photo-breathe{from{transform:scale(1.01) translateY(0)}to{transform:scale(1.065) translateY(-4px)}}
+@keyframes trail-phrase-drift{0%,100%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+@media(max-width:760px){.motion-banner{padding:24px 0 44px}.ambient-pause{right:6%}.motion-banner-track{animation-duration:22s}}
+@media(prefers-reduced-motion:reduce){.motion-banner-track{width:auto;display:block;padding:0 6%}.motion-banner-track>span{white-space:normal;font-size:30px;display:block}.motion-banner-track>span+span{display:none}.story-photo img,.motion-accent.ambient-visible{transform:none}}

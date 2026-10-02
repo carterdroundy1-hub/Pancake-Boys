@@ -194,17 +194,18 @@ function prepareReveals() {
       const isNextHike = entry.target.id === 'next-title';
       entry.target.querySelectorAll('.headline-line').forEach((line, index) => {
         const direction = index % 2 ? -1 : 1;
+        const travel = innerWidth < 761 ? 26 : 42;
         const frames = isNextHike ? [
-          { opacity: .65, transform: `translateX(${direction * 15}px)`, offset: 0 },
-          { opacity: 1, transform: `translateX(${-direction * 2}px)`, offset: .72 },
+          { opacity: .1, transform: `translateX(${direction * travel}px)`, offset: 0 },
+          { opacity: 1, transform: `translateX(${-direction * 4}px)`, offset: .72 },
           { opacity: 1, transform: 'none', offset: 1 }
-        ] : [{ opacity: .65, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }];
-        animate(line, frames, { duration: isNextHike ? 540 : 600, delay: index * 65,
+        ] : [{ opacity: .1, transform: 'translateY(32px)' }, { opacity: 1, transform: 'none' }];
+        animate(line, frames, { duration: 820, delay: index * 110,
           easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
       });
       if (isNextHike) animate(section.querySelector('.next-info'),
         [{opacity:.7,transform:'translateY(8px)'},{opacity:1,transform:'none'}],
-        {duration:420,delay:280,easing:'ease-out',fill:'backwards'});
+        {duration:540,delay:440,easing:'ease-out',fill:'backwards'});
       else section.querySelectorAll('p:not(.eyebrow)').forEach(paragraph => animate(paragraph,
         [{ opacity: .75, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
         { duration: 480, delay: 140, easing: 'ease-out', fill: 'backwards' }));
@@ -418,3 +419,26 @@ if ('IntersectionObserver' in window) {
   }, {threshold:.25});
   footerObserver.observe(footer);
 }
+
+// Ambient movement only runs while its artwork is on screen. Text stays readable.
+const ambientTargets = [...document.querySelectorAll('.motion-banner, .story-photo, .motion-accent')];
+const ambientPause = document.querySelector('.ambient-pause');
+let ambientPaused = false;
+function updateAmbientControl() {
+  ambientPause.hidden = false;
+  ambientPause.disabled = reducedMotion.matches;
+  ambientPause.setAttribute('aria-pressed', String(ambientPaused));
+  ambientPause.setAttribute('aria-label', ambientPaused ? 'Resume banner and photo motion' : 'Pause banner and photo motion');
+  ambientPause.textContent = reducedMotion.matches ? 'MOTION REDUCED' : ambientPaused ? 'PLAY MOTION ▷' : 'PAUSE MOTION Ⅱ';
+  document.documentElement.classList.toggle('ambient-paused', ambientPaused || reducedMotion.matches);
+}
+ambientPause.addEventListener('click', () => { ambientPaused = !ambientPaused; updateAmbientControl(); });
+if ('IntersectionObserver' in window) {
+  const ambientObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    entry.target.classList.toggle('ambient-visible', entry.isIntersecting);
+  }), {threshold:.05});
+  ambientTargets.forEach(target => ambientObserver.observe(target));
+}
+document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('ambient-background', document.hidden));
+reducedMotion.addEventListener('change', updateAmbientControl);
+updateAmbientControl();

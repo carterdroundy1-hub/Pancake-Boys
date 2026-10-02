@@ -68,3 +68,45 @@
 .footer{position:relative;isolation:isolate}
 .footer::before{content:"";position:absolute;inset:0;z-index:-1;background:url("assets/logo.png") center 48%/cover no-repeat;opacity:.16;mix-blend-mode:multiply;pointer-events:none}
 @media(max-width:760px){.brand-emblem{width:44px;height:44px}.menu-brand .brand-emblem{width:52px;height:52px}.brand-intro-inner img{width:160px;height:160px}}
+
+/* Three repeated gestures: a lift, a soft spring, and a drawn line. */
+.brand-emblem{transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.header .brand:focus-visible .brand-emblem{transform:scale(1.05) rotate(-3deg)}
+.header .brand:active .brand-emblem{transform:scale(.95)}
+.text-link{position:relative;border-bottom-color:transparent}
+.text-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(.28);transform-origin:left;transition:transform 280ms cubic-bezier(.22,1,.36,1)}
+.text-link:focus-visible::after{transform:scaleX(1)}
+.text-link span,.link-button span{display:inline-block;transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.text-link:focus-visible span,.link-button:focus-visible span{transform:translate(3px,-3px)}
+.link-button{position:relative;isolation:isolate;overflow:hidden}
+.link-button::before{content:"";position:absolute;inset:0;z-index:-1;background:#ffffff20;transform:translateX(-102%);transition:transform 300ms cubic-bezier(.22,1,.36,1)}
+.link-button:focus-visible::before{transform:translateX(0)}
+.motion-accent{position:relative;display:inline-block;padding-bottom:6px}
+.motion-accent::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--brown);border-radius:45% 30% 50% 25%;transform-origin:left;transform:rotate(-1deg)}
+.next[data-revealed] .motion-accent{animation:phrase-settle 480ms ease-out both}
+.next[data-revealed] .motion-accent::after{animation:accent-draw 480ms 180ms cubic-bezier(.22,1,.36,1) backwards}
+.photo-grid figcaption{transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.photo-grid figure:focus-within figcaption{transform:translateY(-3px)}
+.footer-bottom{position:relative;border-top-color:transparent}
+.footer-bottom::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:#ffffff55;transform-origin:left}
+.footer.motion-entered::before{animation:footer-art-reveal 700ms cubic-bezier(.22,1,.36,1) backwards}
+.footer.motion-entered .footer-bottom::before{animation:footer-line-draw 500ms 300ms cubic-bezier(.22,1,.36,1) backwards}
+@keyframes logo-soft-spring{0%{transform:none}65%{transform:scale(1.055) rotate(-3deg)}85%{transform:scale(1.035) rotate(-1deg)}100%{transform:scale(1.05) rotate(-2deg)}}
+@keyframes phrase-settle{0%{transform:translateX(-6px)}70%{transform:translateX(1px)}100%{transform:none}}
+@keyframes accent-draw{from{transform:scaleX(0) rotate(-1deg)}to{transform:scaleX(1) rotate(-1deg)}}
+@keyframes footer-art-reveal{from{transform:scale(.96);opacity:.08}to{transform:scale(1);opacity:.16}}
+@keyframes footer-line-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(hover:hover) and (pointer:fine){
+  .header .brand:hover .brand-emblem{animation:logo-soft-spring 360ms ease-out forwards}
+  .header .brand:active .brand-emblem{animation:none;transform:scale(.95)}
+  .text-link:hover::after{transform:scaleX(1)}
+  .text-link:hover span,.link-button:hover span{transform:translate(3px,-3px)}
+  .link-button:hover::before{transform:translateX(0)}
+  .photo-grid figure:hover figcaption{transform:translateY(-3px)}
+  .photo-grid .photo-button:hover img{transform:scale(1.035)}
+}
+@media(prefers-reduced-motion:reduce){
+  .header .brand:hover .brand-emblem,.header .brand:focus-visible .brand-emblem,.header .brand:active .brand-emblem,
+  .photo-grid figure:hover figcaption,.photo-grid figure:focus-within figcaption,.photo-grid .photo-button:hover img,
+  .text-link:hover span,.text-link:focus-visible span,.link-button:hover span,.link-button:focus-visible span{transform:none}
+}

@@ -191,14 +191,25 @@ function prepareReveals() {
     if (entry.target.matches('h2')) {
       const section = entry.target.closest('section');
       section.dataset.revealed = 'true';
-      entry.target.querySelectorAll('.headline-line').forEach((line, index) => animate(line,
-        [{ opacity: .65, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }],
-        { duration: 600, delay: index * 65, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
-      section.querySelectorAll('p:not(.eyebrow)').forEach(paragraph => animate(paragraph,
+      const isNextHike = entry.target.id === 'next-title';
+      entry.target.querySelectorAll('.headline-line').forEach((line, index) => {
+        const direction = index % 2 ? -1 : 1;
+        const frames = isNextHike ? [
+          { opacity: .65, transform: `translateX(${direction * 15}px)`, offset: 0 },
+          { opacity: 1, transform: `translateX(${-direction * 2}px)`, offset: .72 },
+          { opacity: 1, transform: 'none', offset: 1 }
+        ] : [{ opacity: .65, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }];
+        animate(line, frames, { duration: isNextHike ? 540 : 600, delay: index * 65,
+          easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
+      });
+      if (isNextHike) animate(section.querySelector('.next-info'),
+        [{opacity:.7,transform:'translateY(8px)'},{opacity:1,transform:'none'}],
+        {duration:420,delay:280,easing:'ease-out',fill:'backwards'});
+      else section.querySelectorAll('p:not(.eyebrow)').forEach(paragraph => animate(paragraph,
         [{ opacity: .75, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
         { duration: 480, delay: 140, easing: 'ease-out', fill: 'backwards' }));
     } else animate(entry.target, [{ opacity: .8, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 580, easing: 'cubic-bezier(.22,1,.36,1)' });
-  }), { threshold: .12 });
+  }), { threshold: .25 });
   document.querySelectorAll('main h2, .story-photo, .photo-grid figure, .merch-image').forEach(element => {
     if (!element.dataset.revealed) revealObserver.observe(element);
   });
@@ -392,3 +403,18 @@ window.addEventListener('pageshow', event => { if (event.persisted) playBrandInt
 document.addEventListener('keydown', event => { if (event.key === 'Escape') dismissBrandIntro(); });
 reducedMotion.addEventListener('change', dismissBrandIntro);
 playBrandIntro();
+
+// The footer gets its own single entrance rather than stacked generic reveals.
+if ('IntersectionObserver' in window) {
+  const footerObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      footerObserver.unobserve(entry.target);
+      footer.classList.add('motion-entered');
+      animate(footer.querySelector('.footer-wordmark'),
+        [{opacity:.65,transform:'translateY(15px)'},{opacity:1,transform:'none'}],
+        {duration:560,delay:100,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'});
+    }
+  }, {threshold:.25});
+  footerObserver.observe(footer);
+}

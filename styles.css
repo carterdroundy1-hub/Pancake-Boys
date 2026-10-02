@@ -21,3 +21,18 @@
 .photo-dialog #gallery-hint{margin-top:14px;font-size:10px;letter-spacing:.3px;text-align:center;color:#cbcfc3}
 @media(max-width:760px){.video-toggle{right:6%;top:180px}.gallery-viewport{height:58svh}.gallery-bottom{gap:10px}.photo-dialog #photo-caption{font-size:12px}.photo-dialog #gallery-hint{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.photo-button:hover img{transform:none}.hero-video,.video-toggle{display:none!important}}
+
+/* Original illustrated logo and brief home entrance. */
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand-emblem{width:72px;height:48px;object-fit:contain;border-radius:2px}
+.menu-brand .brand-emblem{width:96px;height:64px}
+.footer-emblem{display:block;width:min(260px,65vw);margin:0 auto 30px}
+.footer-emblem img{width:100%;height:auto;display:block}
+.brand-intro{position:fixed;inset:0;z-index:1000;background:#10110e;display:grid;place-items:center;pointer-events:none}
+.brand-intro[hidden]{display:none}
+.brand-intro-inner{width:min(320px,75vw);text-align:center;color:var(--paper)}
+.brand-intro-inner img{display:block;width:220px;max-width:100%;height:auto;margin:0 auto 24px;border-radius:3px}
+.brand-intro-inner>span{display:block;font-size:12px;font-weight:700;letter-spacing:2px}
+.brand-intro-bar{height:3px;background:#ffffff26;margin-top:24px;overflow:hidden}
+.brand-intro-bar i{display:block;width:100%;height:100%;background:#c7a17c;transform:scaleX(0);transform-origin:left}
+@media(max-width:760px){.brand{gap:9px}.brand-emblem{width:57px;height:38px}.menu-brand .brand-emblem{width:72px;height:48px}.brand-intro-inner img{width:190px}}

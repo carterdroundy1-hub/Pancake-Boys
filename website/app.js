@@ -357,3 +357,38 @@ if (config.nextHike) {
   details.hidden = !details.children.length;
   if (safeUrl(event.directionsUrl)) { const link = document.querySelector('#event-directions'); link.href = safeUrl(event.directionsUrl); link.target = '_blank'; link.rel = 'noopener'; link.hidden = false; }
 }
+
+// Decorative entrance: finite duration, no scroll/focus lock, no dependency on media.
+const brandIntro = document.querySelector('#brand-intro');
+let introTimer;
+let introExitTimer;
+function dismissBrandIntro() {
+  clearTimeout(introTimer); clearTimeout(introExitTimer);
+  if (!brandIntro) return;
+  brandIntro.hidden = true;
+  brandIntro.getAnimations({subtree:true}).forEach(animation => animation.cancel());
+}
+function playBrandIntro() {
+  if (!brandIntro || !brandIntro.hidden) return;
+  brandIntro.hidden = false;
+  const duration = reducedMotion.matches ? 120 : 1000;
+  const bar = brandIntro.querySelector('.brand-intro-bar i');
+  if (!reducedMotion.matches && bar.animate) {
+    bar.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}], {duration:800,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'});
+  }
+  introTimer = setTimeout(() => {
+    if (!reducedMotion.matches && brandIntro.animate) {
+      brandIntro.animate([{opacity:1},{opacity:0}], {duration:180,fill:'forwards'});
+      introExitTimer = setTimeout(dismissBrandIntro,180);
+    } else dismissBrandIntro();
+  }, duration);
+}
+document.addEventListener('click', event => {
+  const homeLink = event.target.closest?.('a[href="#home"]');
+  if (homeLink && !event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) playBrandIntro();
+},true);
+window.addEventListener('hashchange', () => { if (location.hash === '#home') playBrandIntro(); });
+window.addEventListener('pageshow', event => { if (event.persisted) playBrandIntro(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') dismissBrandIntro(); });
+reducedMotion.addEventListener('change', dismissBrandIntro);
+playBrandIntro();

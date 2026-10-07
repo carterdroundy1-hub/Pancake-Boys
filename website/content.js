@@ -6,10 +6,11 @@ window.PANCAKE_BOYS = {
   // Null restores the mountain photo. See README.md for provenance/replacement.
   heroVideoSrc: 'assets/hero-hike.mp4',
   nextHike: {
-    title: "We're eyeing October 24.",
-    description: 'Saturday, October 24 is the tentative plan. The trail, meeting time, and final details are still being worked out. Check back here or follow along on Instagram before making plans.',
-    date: 'October 24, 2026 (tentative)',
-    tentative: true
+    title: "Pancakes at the Y in Provo.",
+    description: "We're hiking the Y in Provo on Saturday, October 24. Meet us at the top at 6 PM for free pancakes. Come hungry.",
+    date: 'Saturday, October 24, 2026',
+    time: '6 PM at the top',
+    tentative: false
   }
   // nextHike: { title, description, date, time, trailhead, distance, elevationGain,
   //             difficulty, directionsUrl }

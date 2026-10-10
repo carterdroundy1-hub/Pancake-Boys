@@ -26,6 +26,7 @@ function openDialog(dialog, trigger) {
   footer.inert = true;
   header.inert = true;
   syncHeroVideo();
+  syncTrailFilms();
   if (dialog === menu) {
     menuToggle.setAttribute('aria-expanded', 'true');
     animate(menu, [{ opacity: .8, transform: 'translateY(-32px)' }, { opacity: 1, transform: 'none' }], { duration: 400, easing: 'cubic-bezier(.22,1,.36,1)' });
@@ -442,3 +443,42 @@ if ('IntersectionObserver' in window) {
 document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('ambient-background', document.hidden));
 reducedMotion.addEventListener('change', updateAmbientControl);
 updateAmbientControl();
+
+// Each short film loads on demand and stops off screen; manual play always works.
+const trailFilms = [...document.querySelectorAll('[data-trail-film]')].map(video => {
+  const button = video.parentElement.querySelector('[data-film-toggle]');
+  const state = {video,button,visible:false,userPaused:false,userStarted:false,failed:false};
+  function update() {
+    button.textContent = state.failed ? 'FILM UNAVAILABLE' : video.paused ? 'PLAY FILM ▷' : 'PAUSE FILM Ⅱ';
+    button.setAttribute('aria-label', (video.paused ? 'Play ' : 'Pause ') + video.getAttribute('aria-label'));
+    button.disabled = state.failed;
+  }
+  ['playing','pause'].forEach(event => video.addEventListener(event,update));
+  video.addEventListener('error', () => {state.failed=true;video.pause();update();});
+  button.addEventListener('click', () => {
+    state.userPaused = !video.paused;
+    state.userStarted = true;
+    state.visible = true;
+    syncTrailFilms();
+  });
+  return state;
+});
+function syncTrailFilms() {
+  for (const state of trailFilms) {
+    const {video} = state;
+    const avoidAutoplay = reducedMotion.matches || navigator.connection?.saveData;
+    if (state.failed || !state.visible || document.hidden || document.querySelector('dialog[open]') || state.userPaused || (avoidAutoplay && !state.userStarted)) {video.pause();continue;}
+    if (!video.getAttribute('src')) {video.muted=true;video.src=video.dataset.src;}
+    video.play().catch(() => {});
+  }
+}
+if ('IntersectionObserver' in window) {
+  const filmObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {const state=trailFilms.find(item=>item.video===entry.target);state.visible=entry.isIntersecting;});
+    syncTrailFilms();
+  }, {threshold:.25});
+  trailFilms.forEach(({video}) => filmObserver.observe(video));
+}
+document.addEventListener('visibilitychange',syncTrailFilms);
+reducedMotion.addEventListener('change', () => {trailFilms.forEach(state=>state.userStarted=false);syncTrailFilms();});
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',syncTrailFilms));

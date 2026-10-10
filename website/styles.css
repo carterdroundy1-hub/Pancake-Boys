@@ -131,3 +131,13 @@
 @keyframes trail-phrase-drift{0%,100%{transform:translateX(-10px)}50%{transform:translateX(10px)}}
 @media(max-width:760px){.motion-banner{padding:24px 0 44px}.ambient-pause{right:6%}.motion-banner-track{animation-duration:22s}}
 @media(prefers-reduced-motion:reduce){.motion-banner-track{width:auto;display:block;padding:0 6%}.motion-banner-track>span{white-space:normal;font-size:30px;display:block}.motion-banner-track>span+span{display:none}.story-photo img,.motion-accent.ambient-visible{transform:none}}
+
+/* Upright, optimized trail clips share the existing Field Notes composition. */
+.trail-films{max-width:760px;width:100%;justify-self:center;grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:12px}
+.trail-film-frame{position:relative;background:var(--ink);overflow:hidden;aspect-ratio:9/16;max-height:none}
+.trail-film video{display:block;width:100%;height:100%;object-fit:cover}
+.trail-film button{position:absolute;right:14px;bottom:14px;background:#242721e6;color:var(--paper);border:1px solid #ffffff70;min-height:44px;padding:10px 14px;font-size:10px;font-weight:700;letter-spacing:.8px}
+.trail-film button:disabled{opacity:.7;cursor:default}
+.trail-film figcaption{padding-top:12px;font-size:10px;font-weight:700;letter-spacing:.8px}
+@media(max-width:760px){.trail-films{gap:14px}.trail-film-frame{max-height:none}.trail-film button{right:7px;bottom:7px;font-size:8px;padding:8px;min-height:44px}.trail-film figcaption{font-size:8px;line-height:1.5}}
+@media(max-width:400px){.trail-films{grid-template-columns:1fr}.trail-film-frame{max-height:560px}}

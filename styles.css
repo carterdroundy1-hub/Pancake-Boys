@@ -117,3 +117,19 @@
 .trail-film figcaption{padding-top:12px;font-size:10px;font-weight:700;letter-spacing:.8px}
 @media(max-width:760px){.trail-films{gap:14px}.trail-film-frame{max-height:none}.trail-film button{right:7px;bottom:7px;font-size:8px;padding:8px;min-height:44px}.trail-film figcaption{font-size:8px;line-height:1.5}}
 @media(max-width:400px){.trail-films{grid-template-columns:1fr}.trail-film-frame{max-height:560px}}
+
+/* A single editorial collage joins fresh stills with the two portrait films. */
+.field-collage{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,300px) auto;gap:26px 24px;align-items:stretch}
+.field-collage>figure{min-width:0;display:flex;flex-direction:column;margin:0;padding:0;width:auto}
+.field-collage .photo-button,.field-collage .trail-film-frame{flex:1;min-height:0;width:100%;aspect-ratio:auto;max-height:none}
+.field-collage .photo-button img,.field-collage video{height:100%;width:100%;aspect-ratio:auto;object-fit:cover}
+.field-collage figcaption{flex:none;min-height:29px;margin:0;padding:12px 0 0;font-size:9px;font-weight:400;letter-spacing:.8px;line-height:1.5}
+.field-landscape{grid-column:1/3;grid-row:1}.field-landscape img{object-position:center 48%}
+.field-portrait{grid-column:1;grid-row:2}.field-portrait img{object-position:center 38%}
+.field-detail{grid-column:2;grid-row:2}
+.field-film-batter{grid-column:3;grid-row:1/3}.field-film-people{grid-column:4;grid-row:1/3}
+.field-collage .field-note{grid-column:1/-1;grid-row:3;display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid var(--line);margin-top:14px;padding:28px 0 0}
+.field-collage .field-note p{font-size:22px}.field-collage .handwritten{margin:0;white-space:nowrap}
+@media(min-width:1500px){.field-collage{grid-template-rows:repeat(2,350px) auto}}
+@media(max-width:1000px){.field-collage{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:300px 350px 500px auto;gap:24px}.field-landscape{grid-column:1/-1;grid-row:1}.field-portrait{grid-column:1;grid-row:2}.field-detail{grid-column:2;grid-row:2}.field-film-batter{grid-column:1;grid-row:3}.field-film-people{grid-column:2;grid-row:3}.field-collage .field-note{grid-row:4;display:block}.field-collage .field-note p{margin:14px 0}.field-collage .handwritten{display:block}}
+@media(max-width:600px){.field-collage{grid-template-rows:230px 270px 330px auto;gap:22px 14px}.field-collage figcaption{font-size:8px;letter-spacing:.5px}.field-collage .trail-film button{right:7px;bottom:7px;font-size:8px;padding:8px}.field-collage .field-note{padding-top:24px}.field-collage .field-note p{font-size:22px}}

@@ -325,3 +325,72 @@ function initInlineVideos() {
 }
 
 initInlineVideos();
+
+function initReveals() {
+  const items = [...document.querySelectorAll('.reveal')];
+  if (!items.length) return;
+  const show = element => element.classList.add('is-shown');
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    document.documentElement.classList.remove('motion-on');
+    items.forEach(show);
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      show(entry.target);
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+  const viewHeight = window.innerHeight || 1;
+  items.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < viewHeight * 0.92 && rect.bottom > 0) show(element);
+    else observer.observe(element);
+  });
+}
+
+function initParallax() {
+  const clips = [...document.querySelectorAll('.parallax-clip')];
+  if (!clips.length) return;
+  let frame = null;
+  const update = () => {
+    frame = null;
+    if (reducedMotion.matches) {
+      clips.forEach(clip => {
+        const shift = clip.querySelector('.parallax-shift');
+        if (shift) shift.style.transform = '';
+      });
+      return;
+    }
+    const viewHeight = window.innerHeight || 1;
+    for (const clip of clips) {
+      const shift = clip.querySelector('.parallax-shift');
+      if (!shift) continue;
+      const rect = clip.getBoundingClientRect();
+      if (rect.bottom < -40 || rect.top > viewHeight + 40) continue;
+      const extra = shift.offsetHeight - clip.clientHeight;
+      if (extra <= 1) continue;
+      const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
+      const t = Math.min(1, Math.max(0, progress));
+      const depth = Number(clip.dataset.depth || 1);
+      const y = extra * (0.5 - t) * (Number.isFinite(depth) ? depth : 1);
+      shift.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
+    }
+  };
+  const requestUpdate = () => {
+    if (frame === null) frame = requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  clips.forEach(clip => {
+    clip.querySelectorAll('img').forEach(image => {
+      if (!image.complete) image.addEventListener('load', requestUpdate, { once: true });
+    });
+  });
+  reducedMotion.addEventListener('change', requestUpdate);
+  requestUpdate();
+}
+
+initReveals();
+initParallax();

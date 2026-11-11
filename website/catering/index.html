@@ -22,9 +22,13 @@
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <link rel="preload" as="image" href="../assets/logo.png">
   <link rel="preload" as="image" href="../assets/catering/griddle-flip-poster.webp">
-  <link rel="stylesheet" href="../styles.css?v=catering-3">
+  <link rel="stylesheet" href="../styles.css?v=catering-4">
   <script src="../content.js" defer></script>
-  <script src="../catering.js?v=3" defer></script>
+  <script src="../catering.js?v=4" defer></script>
+  <script>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-on');
+  </script>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="page-catering">
   <header class="header on-light" id="header">
@@ -45,18 +49,21 @@
       <div class="section-label"><span>CATERING / UTAH</span><span>COOKED ON SITE. ON THE GRIDDLE.</span></div>
       <div class="story-layout catering-split">
         <div class="catering-copy">
-          <p class="eyebrow">BREAKFAST, WHERE YOU GATHER</p>
-          <h1 id="catering-title">WE BRING<br>THE GRIDDLE<br>TO YOU.</h1>
-          <p>We show up and cook breakfast on site — pancakes coming off the griddle while your people gather.</p>
-          <div class="catering-hero-actions">
+          <p class="eyebrow reveal">BREAKFAST, WHERE YOU GATHER</p>
+          <h1 class="reveal" id="catering-title" style="--i:1">WE BRING<br>THE GRIDDLE<br>TO YOU.</h1>
+          <p class="reveal" style="--i:1">We show up and cook breakfast on site — pancakes coming off the griddle while your people gather.</p>
+          <div class="catering-hero-actions reveal" style="--i:2">
             <a class="link-button dark" href="#inquiry">REQUEST A QUOTE <span aria-hidden="true">↗</span></a>
             <a class="link-button dark" href="#menu">MENU <span aria-hidden="true">↗</span></a>
+            <a class="link-button dark" href="#packages">PACKAGES <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <figure class="catering-photo catering-video-frame" data-video-focus="cook">
-          <div class="catering-video-wrap">
-            <img src="../assets/catering/griddle-flip-poster.webp" width="720" height="1280" alt="A Pancake Boy in a brown apron flipping pancakes on an outdoor griddle" fetchpriority="high">
-            <video class="catering-inline-video" muted playsinline loop preload="metadata" poster="../assets/catering/griddle-flip-poster.webp" data-src="../assets/catering/griddle-flip.mp4" width="720" height="1280" disablepictureinpicture aria-label="A Pancake Boy in a brown apron flipping pancakes on an outdoor griddle"></video>
+        <figure class="catering-photo catering-video-frame parallax-frame" data-video-focus="cook">
+          <div class="parallax-clip" data-depth="0.75">
+            <div class="catering-video-wrap parallax-shift">
+              <img src="../assets/catering/griddle-flip-poster.webp" width="720" height="1280" alt="A Pancake Boy in a brown apron flipping pancakes on an outdoor griddle" fetchpriority="high">
+              <video class="catering-inline-video" muted playsinline loop preload="metadata" poster="../assets/catering/griddle-flip-poster.webp" data-src="../assets/catering/griddle-flip.mp4" width="720" height="1280" disablepictureinpicture aria-label="A Pancake Boy in a brown apron flipping pancakes on an outdoor griddle"></video>
+            </div>
           </div>
           <figcaption>HANDS ON THE GRIDDLE.</figcaption>
         </figure>
@@ -67,19 +74,21 @@
       <div class="section-label"><span>01 / WHO WE COOK FOR</span><span>BRING PEOPLE TOGETHER</span></div>
       <div class="story-layout catering-split">
         <div class="catering-copy">
-          <h2 id="for-title">FOR THE<br>GATHERINGS<br>THAT MATTER.</h2>
-          <p>Corporate mornings, fire crews and first responders, wedding mornings, and community or church events around Utah.</p>
+          <h2 class="reveal" id="for-title">FOR THE<br>GATHERINGS<br>THAT MATTER.</h2>
+          <p class="reveal" style="--i:1">Corporate mornings, fire crews and first responders, wedding mornings, and community or church events around Utah.</p>
           <div class="catering-offers catering-offer-tiles">
-            <article><h3>Corporate team breakfasts</h3></article>
-            <article><h3>Fire departments and first responders</h3></article>
-            <article><h3>Wedding mornings</h3></article>
-            <article><h3>Community or church events</h3></article>
+            <article class="reveal" style="--i:0"><h3>Corporate team breakfasts</h3></article>
+            <article class="reveal" style="--i:1"><h3>Fire departments and first responders</h3></article>
+            <article class="reveal" style="--i:2"><h3>Wedding mornings</h3></article>
+            <article class="reveal" style="--i:3"><h3>Community or church events</h3></article>
           </div>
         </div>
-        <figure class="catering-photo catering-video-frame" data-video-focus="gather">
-          <div class="catering-video-wrap">
-            <img src="../assets/catering/gathering-poster.webp" width="720" height="1280" alt="Friends gathered under a mountain pavilion, sitting along a stone bench with plates while the valley opens behind them" loading="lazy">
-            <video class="catering-inline-video" muted playsinline loop preload="metadata" poster="../assets/catering/gathering-poster.webp" data-src="../assets/catering/gathering.mp4" width="720" height="1280" disablepictureinpicture aria-label="Friends gathered under a mountain pavilion, sitting along a stone bench with plates while the valley opens behind them"></video>
+        <figure class="catering-photo catering-video-frame parallax-frame" data-video-focus="gather">
+          <div class="parallax-clip" data-depth="0.75">
+            <div class="catering-video-wrap parallax-shift">
+              <img src="../assets/catering/gathering-poster.webp" width="720" height="1280" alt="Friends gathered under a mountain pavilion, sitting along a stone bench with plates while the valley opens behind them" loading="lazy">
+              <video class="catering-inline-video" muted playsinline loop preload="metadata" poster="../assets/catering/gathering-poster.webp" data-src="../assets/catering/gathering.mp4" width="720" height="1280" disablepictureinpicture aria-label="Friends gathered under a mountain pavilion, sitting along a stone bench with plates while the valley opens behind them"></video>
+            </div>
           </div>
           <figcaption>YOUR PEOPLE. A FULL PLATE.</figcaption>
         </figure>
@@ -88,24 +97,24 @@
 
     <section class="section catering-method" id="how-it-works" aria-labelledby="method-title">
       <div class="section-label"><span>02 / HOW IT WORKS</span><span>WE COOK IN FRONT OF YOU</span></div>
-      <h2 id="method-title">COOKED ON SITE.</h2>
-      <p class="catering-lead">We bring the griddles and cook in front of your group — not drop-off trays.</p>
+      <h2 class="reveal" id="method-title">COOKED ON SITE.</h2>
+      <p class="catering-lead reveal" style="--i:1">We bring the griddles and cook in front of your group — not drop-off trays.</p>
       <ol class="catering-steps">
-        <li>
+        <li class="reveal" style="--i:0">
           <span>01</span>
           <div>
             <h3>Send the details</h3>
             <p>Who you are gathering, where, and about how many plates.</p>
           </div>
         </li>
-        <li>
+        <li class="reveal" style="--i:1">
           <span>02</span>
           <div>
             <h3>We send a quote</h3>
             <p>Every gathering is a little different. Quotes are on request.</p>
           </div>
         </li>
-        <li>
+        <li class="reveal" style="--i:2">
           <span>03</span>
           <div>
             <h3>We cook, you gather</h3>
@@ -114,12 +123,20 @@
         </li>
       </ol>
       <div class="catering-photo-pair">
-        <figure class="catering-photo">
-          <img src="../assets/catering/pancake-on-griddle.webp" width="900" height="1600" alt="Chocolate-chip pancakes cooking on a griddle, the nearest one decorated with a syrup swirl" loading="lazy">
+        <figure class="catering-photo parallax-frame reveal">
+          <div class="parallax-clip">
+            <div class="parallax-shift">
+              <img src="../assets/catering/pancake-on-griddle.webp" width="900" height="1600" alt="Chocolate-chip pancakes cooking on a griddle, the nearest one decorated with a syrup swirl" loading="lazy">
+            </div>
+          </div>
           <figcaption>FRESH OFF THE GRIDDLE.</figcaption>
         </figure>
-        <figure class="catering-photo">
-          <img src="../assets/catering/host-at-griddle.webp" width="900" height="1600" alt="A cook in a white coat preparing pancakes on a griddle while guests wait in line at a community gathering" loading="lazy">
+        <figure class="catering-photo parallax-frame reveal" style="--i:1">
+          <div class="parallax-clip">
+            <div class="parallax-shift">
+              <img src="../assets/catering/host-at-griddle.webp" width="900" height="1600" alt="A cook in a white coat preparing pancakes on a griddle while guests wait in line at a community gathering" loading="lazy">
+            </div>
+          </div>
           <figcaption>COOKED IN FRONT OF YOU.</figcaption>
         </figure>
       </div>
@@ -127,102 +144,241 @@
 
     <section class="section catering-menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-label"><span>03 / A SAMPLE BREAKFAST</span><span>QUOTES ON REQUEST</span></div>
-      <div class="story-layout catering-split">
+      <div class="story-layout catering-split catering-menu-intro">
         <div class="catering-copy">
-          <h2 id="menu-title">WHAT WE<br>LIKE TO COOK.</h2>
-          <p>A starting menu — we will tailor it with you. Quotes on request.</p>
-          <!-- DRAFT MENU: only cinnamon roll pancakes and fruit are confirmed. Finalize before treating the rest as set. -->
-          <div class="catering-menu">
-            <article>
-              <h3>Cinnamon roll pancakes</h3>
-              <p>Cinnamon swirl on the griddle, finished with a sweet glaze.</p>
-            </article>
-            <article>
-              <h3>Buttermilk pancakes</h3>
-              <p>Made fresh on the griddle. Chocolate chips when you want them.</p>
-            </article>
-            <article>
-              <h3>Toppings bar</h3>
-              <p>Fruit, whipped cream, chocolate chips, and other favorites.</p>
-            </article>
-            <article>
-              <h3>Syrup</h3>
-              <p>Classic maple, plus options we can talk through.</p>
-            </article>
-            <article>
-              <h3>Bacon and sausage</h3>
-              <p>Hot off the griddle, alongside the pancakes.</p>
-            </article>
-            <article>
-              <h3>Eggs</h3>
-              <p>Cooked to fit the setup and the group.</p>
-            </article>
-            <article>
-              <h3>Fruit</h3>
-              <p>A fresh side to go with breakfast.</p>
-            </article>
-            <article>
-              <h3>Coffee, orange juice, and hot cocoa</h3>
-              <p>The drinks people reach for in the morning.</p>
-            </article>
-            <article>
-              <h3>Gluten-free, on request</h3>
-              <p>Mention it in your inquiry and we will plan for it.</p>
-            </article>
-          </div>
+          <h2 class="reveal" id="menu-title">WHAT WE<br>LIKE TO COOK.</h2>
+          <p class="reveal" style="--i:1">A starting menu — we will tailor it with you. Quotes on request.</p>
         </div>
-        <figure class="catering-photo">
-          <img src="../assets/catering/guest-with-pancakes.webp" width="900" height="1600" alt="A smiling guest holding a paper plate with two pancakes at an outdoor gathering" loading="lazy">
+        <figure class="catering-photo parallax-frame">
+          <div class="parallax-clip" data-depth="0.7">
+            <div class="parallax-shift">
+              <img src="../assets/catering/guest-with-pancakes.webp" width="900" height="1600" alt="A smiling guest holding a paper plate with two pancakes at an outdoor gathering" loading="lazy">
+            </div>
+          </div>
           <figcaption>A WARM PLATE AND A GOOD MORNING.</figcaption>
         </figure>
+      </div>
+      <!-- DRAFT MENU: only cinnamon roll pancakes and fruit are confirmed. Finalize before treating the rest as set. -->
+      <!-- Menu photos are freely licensed stock (commercial use, no attribution required). Sources are listed in website/README.md. -->
+      <div class="catering-menu">
+        <article class="menu-card menu-card-feature reveal">
+          <div class="parallax-clip" data-depth="0.65">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-cinnamon.webp" width="1400" height="934" alt="Two cinnamon rolls with a dark cinnamon swirl, on a white plate" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <p class="eyebrow">THE ONE PEOPLE ASK FOR</p>
+            <h3>Cinnamon roll pancakes</h3>
+            <p>Cinnamon swirl on the griddle, finished with a sweet glaze.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:1">
+          <div class="parallax-clip" data-depth="0.6">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-buttermilk.webp" width="1000" height="1500" alt="A stack of pancakes with berries and syrup on a wooden plate" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Buttermilk pancakes</h3>
+            <p>Made fresh on the griddle. Chocolate chips when you want them.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:0">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-toppings.webp" width="1000" height="610" alt="Pancakes finished with fruit, a sweet glaze, and a cup of whipped cream" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Toppings bar</h3>
+            <p>Fruit, whipped cream, chocolate chips, and other favorites.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:1">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-syrup.webp" width="1000" height="1250" alt="Syrup pouring from a pitcher onto a stack of pancakes" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Syrup</h3>
+            <p>Classic maple, plus options we can talk through.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:2">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-bacon.webp" width="1000" height="778" alt="Crispy bacon laid over scrambled eggs, with a cup of syrup beside them" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Bacon and sausage</h3>
+            <p>Hot off the griddle, alongside the pancakes.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:0">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-eggs.webp" width="1000" height="832" alt="Eggs baked in a black skillet with melted cheese and herbs" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Eggs</h3>
+            <p>Cooked to fit the setup and the group.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:1">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-fruit.webp" width="1000" height="662" alt="Two hands holding a handful of ripe strawberries" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Fruit</h3>
+            <p>A fresh side to go with breakfast.</p>
+          </div>
+        </article>
+        <article class="menu-card reveal" style="--i:2">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-drinks.webp" width="1000" height="1500" alt="Hot cocoa pouring into a ceramic mug" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Coffee, orange juice, and hot cocoa</h3>
+            <p>The drinks people reach for in the morning.</p>
+          </div>
+        </article>
+        <article class="menu-card menu-card-note reveal">
+          <div class="parallax-clip" data-depth="0.5">
+            <div class="parallax-shift">
+              <img src="../assets/catering/menu-gluten-free.webp" width="1100" height="880" alt="A tall stack of pancakes with berries. Ask us if you need this gluten-free." loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Gluten-free, on request</h3>
+            <p>Mention it in your inquiry and we will plan for it.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section catering-packages" id="packages" aria-labelledby="packages-title">
+      <div class="section-label"><span>04 / PACKAGES</span><span>ROUGH ESTIMATES</span></div>
+      <div class="packages-head">
+        <h2 class="reveal" id="packages-title">A PLACE<br>TO START.</h2>
+        <p class="catering-lead reveal" style="--i:1">Three rough per-person estimates, built from the menu above. They are a way to picture the morning — not a set price. Every gathering is a little different, so request a quote and we will price yours.</p>
+      </div>
+      <div class="package-grid">
+        <article class="package-card reveal" style="--i:0">
+          <p class="package-index">01</p>
+          <h3>The Trail</h3>
+          <p class="package-price"><span class="package-amount">$4</span> <span class="package-unit">/ person</span></p>
+          <p class="package-estimate">Rough estimate</p>
+          <ul>
+            <li>Buttermilk pancakes, cooked on the griddle</li>
+            <li>Classic maple syrup</li>
+            <li>A fresh fruit side</li>
+          </ul>
+        </article>
+        <article class="package-card reveal" style="--i:1">
+          <p class="package-index">02</p>
+          <h3>The Ridge</h3>
+          <p class="package-price"><span class="package-amount">$5</span> <span class="package-unit">/ person</span></p>
+          <p class="package-estimate">Rough estimate</p>
+          <ul>
+            <li>Everything in The Trail</li>
+            <li>Cinnamon roll pancakes</li>
+            <li>Toppings bar: fruit, whipped cream, and chocolate chips</li>
+            <li>Bacon or sausage</li>
+          </ul>
+        </article>
+        <article class="package-card package-card-summit reveal" style="--i:2">
+          <p class="package-index">03</p>
+          <h3>The Summit</h3>
+          <p class="package-price"><span class="package-amount">$6</span> <span class="package-unit">/ person</span></p>
+          <p class="package-estimate">Rough estimate</p>
+          <ul>
+            <li>Everything in The Ridge</li>
+            <li>Both bacon and sausage</li>
+            <li>Eggs</li>
+            <li>Coffee, orange juice, and hot cocoa</li>
+            <li>Gluten-free, when you ask</li>
+          </ul>
+        </article>
+      </div>
+      <p class="package-note reveal">Rough estimates only. Headcount, setup, dietary needs — including gluten-free on any tier — and anything else the morning needs, ask us. <a href="#inquiry">Request a quote</a> and we will write back with a real number.</p>
+      <div class="packages-cta reveal" style="--i:1">
+        <a class="link-button dark" href="#inquiry">REQUEST A QUOTE <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="section catering-gallery" id="from-the-griddle" aria-label="Photos from our gatherings">
-      <div class="section-label"><span>04 / FROM THE GRIDDLE</span><span>REAL GATHERINGS</span></div>
+      <div class="section-label"><span>05 / FROM THE GRIDDLE</span><span>REAL GATHERINGS</span></div>
       <div class="catering-strip">
-        <figure>
-          <img src="../assets/catering/serving-guests.webp" width="900" height="1600" alt="A Pancake Boy in a blue hoodie and brown apron serving pancakes from a griddle to guests outdoors, with a mixing bowl in the foreground and a mountain behind them" loading="lazy">
+        <figure class="parallax-frame reveal">
+          <div class="parallax-clip">
+            <div class="parallax-shift">
+              <img src="../assets/catering/serving-guests.webp" width="900" height="1600" alt="A Pancake Boy in a blue hoodie and brown apron serving pancakes from a griddle to guests outdoors, with a mixing bowl in the foreground and a mountain behind them" loading="lazy">
+            </div>
+          </div>
           <figcaption>SERVING FROM THE GRIDDLE.</figcaption>
         </figure>
-        <figure>
-          <img src="../assets/catering/group-at-griddle.webp" width="900" height="1600" alt="A smiling cook in a brown Pancake Boys apron at a griddle filled with pancakes, with a cheerful line of guests waiting under a pavilion" loading="lazy">
+        <figure class="parallax-frame reveal" style="--i:1">
+          <div class="parallax-clip">
+            <div class="parallax-shift">
+              <img src="../assets/catering/group-at-griddle.webp" width="900" height="1600" alt="A smiling cook in a brown Pancake Boys apron at a griddle filled with pancakes, with a cheerful line of guests waiting under a pavilion" loading="lazy">
+            </div>
+          </div>
           <figcaption>A LINE, AND PLENTY OF COMPANY.</figcaption>
         </figure>
-        <figure>
-          <img src="../assets/catering/host-and-mountain.webp" width="900" height="1600" alt="A Pancake Boy in a brown apron standing at an outdoor griddle on a lawn, with trees and a mountain rising behind him" loading="lazy">
+        <figure class="parallax-frame reveal" style="--i:2">
+          <div class="parallax-clip">
+            <div class="parallax-shift">
+              <img src="../assets/catering/host-and-mountain.webp" width="900" height="1600" alt="A Pancake Boy in a brown apron standing at an outdoor griddle on a lawn, with trees and a mountain rising behind him" loading="lazy">
+            </div>
+          </div>
           <figcaption>THE SAME WORK WE DO OUTSIDE.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="story section" id="why-it-matters" aria-labelledby="mission-title">
-      <div class="section-label"><span>05 / WHY IT MATTERS</span><span>MORE PEOPLE. MORE PANCAKES.</span></div>
+      <div class="section-label"><span>06 / WHY IT MATTERS</span><span>MORE PEOPLE. MORE PANCAKES.</span></div>
       <div class="story-layout catering-split">
         <div class="story-copy catering-copy">
-          <h2 id="mission-title">THE TRAIL<br>BREAKFASTS<br>STAY FREE.</h2>
-          <p>Catering helps us buy more mix, carry more gear, and keep showing up with free pancakes.</p>
+          <h2 class="reveal" id="mission-title">THE TRAIL<br>BREAKFASTS<br>STAY FREE.</h2>
+          <p class="reveal" style="--i:1">Catering helps us buy more mix, carry more gear, and keep showing up with free pancakes.</p>
         </div>
-        <figure class="catering-photo story-photo catering-mountain-photo">
-          <img src="../assets/catering/crew-sunset.webp" width="900" height="1286" alt="Pancake Boys in brown aprons cooking pancakes on a mountain overlook at sunset, with the valley stretching behind them" loading="lazy">
+        <figure class="catering-photo story-photo catering-mountain-photo parallax-frame">
+          <div class="parallax-clip" data-depth="0.7">
+            <div class="parallax-shift">
+              <img src="../assets/catering/crew-sunset.webp" width="900" height="1286" alt="Pancake Boys in brown aprons cooking pancakes on a mountain overlook at sunset, with the valley stretching behind them" loading="lazy">
+            </div>
+          </div>
           <figcaption>SAME BROWN APRONS.</figcaption>
         </figure>
       </div>
-      <figure class="catering-landscape">
-        <img src="../assets/catering/mountain-evening.webp" width="1200" height="1600" alt="Peach-pink sunset clouds above a dark, rugged Utah mountain ridge" loading="lazy">
+      <figure class="catering-landscape parallax-frame">
+        <div class="parallax-clip" data-depth="0.85">
+          <div class="parallax-shift">
+            <img src="../assets/catering/mountain-evening.webp" width="1200" height="1600" alt="Peach-pink sunset clouds above a dark, rugged Utah mountain ridge" loading="lazy">
+          </div>
+        </div>
         <figcaption>UTAH EVENINGS.</figcaption>
       </figure>
     </section>
 
     <section class="section catering-inquiry" id="inquiry" aria-labelledby="inquiry-title">
-      <div class="section-label"><span>06 / REQUEST A QUOTE</span><span>NO SET PRICE LIST</span></div>
+      <div class="section-label"><span>07 / REQUEST A QUOTE</span><span>WE'LL QUOTE IT</span></div>
       <div class="catering-inquiry-layout">
         <div class="catering-copy">
-          <h2 id="inquiry-title">TELL US ABOUT<br>YOUR GATHERING.</h2>
-          <p>Share a few details and we will write back with a quote.</p>
+          <h2 class="reveal" id="inquiry-title">TELL US ABOUT<br>YOUR GATHERING.</h2>
+          <p class="reveal" style="--i:1">Share a few details and we will write back with a quote.</p>
           <p class="catering-fallback">Prefer to write us directly? <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a></p>
         </div>
-        <form class="catering-form" id="catering-form" action="https://formspree.io/f/xyewgjbp" method="POST">
+        <form class="catering-form reveal" id="catering-form" action="https://formspree.io/f/xyewgjbp" method="POST" style="--i:1">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <p class="catering-required-note">Required fields are marked with an asterisk (*).</p>
           <div class="catering-form-grid">

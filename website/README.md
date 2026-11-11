@@ -44,4 +44,6 @@ October 24 remains tentative, pancakes free, and Instagram unchanged. RSVP, paym
 
 `catering/index.html` is the maintained catering page. GitHub Pages serves it at `/catering` from the synced root copy. After markup changes, run `python website/qa/sync_entry.py`.
 
+Scrolling pans several photos inside clipped frames (transform only, on requestAnimationFrame). Headlines, steps, menu cards, and packages reveal as they enter view. Both effects stay still when `prefers-reduced-motion` is set. The sample menu keeps the same items and pairs each one with a freely licensed stock photo in `assets/catering/` (Unsplash License or Pexels License; commercial use, attribution not required). Three package cards — The Trail at $4/person, The Ridge at $5/person, and The Summit at $6/person — are rough estimates only and send people to the inquiry form for a real quote.
+
 The inquiry form currently opens a prefilled email to `pancak3boys@gmail.com`. To collect submissions through Formspree later, set `FORM_ENDPOINT` at the top of `catering.js` to your form URL (a one-line change) and the same fields will POST instead.

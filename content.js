@@ -6,11 +6,9 @@ window.PANCAKE_BOYS = {
   // Null keeps the current mountain photo. See README.md for the video handoff.
   heroVideoSrc: null,
   nextHike: {
-    title: "Pancakes at the Y in Provo.",
-    description: "We're hiking the Y in Provo on Saturday, October 24. Meet us at the top at 6 PM for free pancakes. Come hungry.",
-    date: 'Saturday, October 24, 2026',
-    time: '6 PM at the top',
-    tentative: false
+    title: "Coming soon.",
+    description: "We'll keep you posted! We're eyeing a cheeky winter hike, maybe Donut Falls 👀",
+    tentative: true
   }
   // nextHike: { title, description, date, time, trailhead, distance, elevationGain,
   //             difficulty, directionsUrl }

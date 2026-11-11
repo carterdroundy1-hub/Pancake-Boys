@@ -227,6 +227,9 @@
 .menu-card-body{padding:18px 18px 20px;display:flex;flex-direction:column;justify-content:center}
 .menu-card .parallax-clip{flex:1 1 auto;min-height:210px;aspect-ratio:4/3}
 .menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:auto;height:100%;min-height:280px}
+.catering-menu .menu-drinks{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;min-width:0}
+.menu-drinks .menu-card{grid-column:auto;min-width:0}
+.menu-drinks .parallax-clip{min-height:0;flex:none}
 .catering-menu .menu-card-mini{grid-column:span 3}
 .catering-menu .topping-row-start{grid-column:1 / span 3}
 .menu-card-mini h3{font-size:18px}
@@ -312,6 +315,7 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .catering-menu .menu-card{grid-column:span 1}
   .catering-menu .menu-card-feature,.catering-menu .menu-card-note{grid-column:span 2}
   .catering-menu .menu-card-mini,.catering-menu .topping-row-start{grid-column:span 1}
+  .catering-menu .menu-drinks{grid-column:1 / -1}
   .flavor-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .package-grid,.catering-packages .packages-head,.catering-flavors .packages-head{grid-template-columns:1fr;gap:28px}
 }
@@ -335,7 +339,11 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .catering-menu{grid-template-columns:1fr;gap:18px;margin-top:36px}
   .catering-menu .menu-card,.catering-menu .menu-card-feature,.catering-menu .menu-card-note,.catering-menu .menu-card-mini{grid-column:auto;display:flex;flex-direction:column}
   .menu-card .parallax-clip,.menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:4/3;height:auto;min-height:0;flex:none}
-  .menu-card-mini .parallax-clip,.flavor-card .parallax-clip{aspect-ratio:1}
+  .menu-card-mini .parallax-clip,.flavor-card .parallax-clip,.menu-drinks .parallax-clip{aspect-ratio:1}
+  .catering-menu .menu-drinks{grid-column:1 / -1;gap:10px}
+  .menu-drinks .menu-card-body{padding:10px 8px 12px}
+  .menu-drinks h3{font-size:15px;line-height:1.15}
+  .menu-drinks p{font-size:12px}
   .menu-card-feature h3{font-size:14vw}
   .flavor-grid{grid-template-columns:1fr 1fr;gap:12px}
   .flavor-card h3{font-size:28px}

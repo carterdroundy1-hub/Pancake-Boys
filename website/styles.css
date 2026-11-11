@@ -186,6 +186,8 @@
 .story-layout.catering-split{align-items:start}
 .catering-copy p{font-size:15px;max-width:420px;color:#5e625a}
 .catering-copy .link-button{margin-top:32px}
+.catering-hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:32px;width:max-content;max-width:100%}
+.catering-copy .catering-hero-actions .link-button{margin-top:0}
 .catering-photo img{width:100%;height:100%;max-height:720px;min-height:420px;object-fit:cover;object-position:center 35%}
 .catering-photo figcaption,.catering-landscape figcaption,.catering-strip figcaption{font-size:9px;letter-spacing:1px;margin-top:14px}
 .catering-video-wrap{position:relative;overflow:hidden}
@@ -222,6 +224,7 @@
 .story .catering-landscape figcaption{margin-top:14px}
 .story .catering-copy p{color:#cbcfc3}
 .page-catering .story-photo img{object-position:center 22%}
+.page-catering .catering-mountain-photo.story-photo img{object-position:center 45%}
 .catering-inquiry{padding-bottom:120px}
 .catering-inquiry-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;align-items:start}
 .catering-fallback{margin-top:28px;max-width:420px}

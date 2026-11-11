@@ -39,3 +39,9 @@ $env:NODE_PATH = 'C:/Users/carte/.cache/codex-runtimes/codex-primary-runtime/dep
 GitHub Pages publishes the root from `main`; keep `CNAME` as `pancak3boys.com`. See [deployment.md](deployment.md) for required public DNS corrections.
 
 October 24 remains tentative, pancakes free, and Instagram unchanged. RSVP, payments, checkout, email lists and partnership submissions still require genuine destinations and never pretend to submit data.
+
+## Catering page
+
+`catering/index.html` is the maintained catering page. GitHub Pages serves it at `/catering` from the synced root copy. After markup changes, run `python website/qa/sync_entry.py`.
+
+The inquiry form currently opens a prefilled email to `pancak3boys@gmail.com`. To collect submissions through Formspree later, set `FORM_ENDPOINT` at the top of `catering.js` to your form URL (a one-line change) and the same fields will POST instead.

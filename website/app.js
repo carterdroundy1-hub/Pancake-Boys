@@ -81,10 +81,13 @@ document.querySelectorAll('dialog').forEach(dialog => {
   dialog.addEventListener('click', e => { if (e.target === dialog && dialog !== menu) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeDialog(dialog); } });
 });
 document.querySelectorAll('#menu-dialog nav a').forEach(link => link.addEventListener('click', e => {
+  const href = link.getAttribute('href') || '';
+  if (!href.startsWith('#') || href.length < 2) return;
+  const target = document.querySelector(href);
+  if (!target) return;
   e.preventDefault();
-  const target = document.querySelector(link.getAttribute('href'));
   closeDialog(menu, () => {
-    history.replaceState(null, '', link.getAttribute('href'));
+    history.replaceState(null, '', href);
     target.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' });
     target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
   });

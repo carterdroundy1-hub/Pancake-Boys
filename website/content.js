@@ -2,9 +2,8 @@
 window.PANCAKE_BOYS = {
   instagramUrl: 'https://www.instagram.com/pancak3boys/',
   contactEmail: null,
-  // Real Stewart Falls footage recovered from the owner's original photo ZIP.
-  // Null restores the mountain photo. See README.md for provenance/replacement.
-  heroVideoSrc: 'assets/hero-hike.mp4',
+  // Waterfall hero film supplied by the owner (Nov 2026). Null restores the poster photo.
+  heroVideoSrc: 'assets/hero-waterfall.mp4',
   nextHike: {
     title: "Coming soon.",
     description: "We'll keep you posted! We're eyeing a cheeky winter hike, maybe Donut Falls 👀",

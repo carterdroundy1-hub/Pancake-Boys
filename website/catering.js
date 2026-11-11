@@ -28,6 +28,7 @@ function openDialog(dialog, trigger) {
   dialog.showModal();
   dialog.scrollTop = 0;
   document.body.classList.add('dialog-open');
+  document.querySelectorAll('.catering-inline-video').forEach(pauseInlineVideo);
   if (main) main.inert = true;
   if (footer) footer.inert = true;
   header.inert = true;
@@ -81,6 +82,7 @@ document.querySelectorAll('dialog').forEach(dialog => {
     if (main) main.inert = false;
     if (footer) footer.inert = false;
     header.inert = false;
+    document.querySelectorAll('.catering-inline-video.is-inview').forEach(playInlineVideo);
     menuToggle?.setAttribute('aria-expanded', 'false');
     const state = dialogStates.get(dialog);
     if (state?.afterClose) state.afterClose();
@@ -243,3 +245,83 @@ if (footer && 'IntersectionObserver' in window) {
   }, { threshold: .25 });
   footerObserver.observe(footer);
 }
+
+
+function connectionSaveData() {
+  return Boolean(navigator.connection?.saveData);
+}
+
+function pauseInlineVideo(video) {
+  if (!video) return;
+  video.pause();
+  video.classList.remove('is-playing');
+}
+
+function canPlayInlineVideos() {
+  return !reducedMotion.matches && !connectionSaveData();
+}
+
+function playInlineVideo(video) {
+  if (!video || !canPlayInlineVideos() || document.hidden || document.body.classList.contains('dialog-open')) {
+    pauseInlineVideo(video);
+    return;
+  }
+  if (!video.getAttribute('src')) {
+    const src = video.dataset.src;
+    if (!src) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('src', src);
+  }
+  const play = video.play();
+  if (play && typeof play.then === 'function') {
+    play.then(() => video.classList.add('is-playing')).catch(() => pauseInlineVideo(video));
+  }
+}
+
+function initInlineVideos() {
+  const videos = [...document.querySelectorAll('.catering-inline-video')];
+  if (!videos.length) return;
+
+  const startVisible = () => {
+    videos.forEach(video => {
+      if (video.classList.contains('is-inview')) playInlineVideo(video);
+    });
+  };
+
+  if (!canPlayInlineVideos() || !('IntersectionObserver' in window)) {
+    videos.forEach(video => {
+      pauseInlineVideo(video);
+      video.removeAttribute('src');
+      video.load();
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      const video = entry.target;
+      video.classList.toggle('is-inview', entry.isIntersecting);
+      if (entry.isIntersecting) playInlineVideo(video);
+      else pauseInlineVideo(video);
+    }
+  }, { threshold: .35 });
+  videos.forEach(video => observer.observe(video));
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) videos.forEach(pauseInlineVideo);
+    else startVisible();
+  });
+  reducedMotion.addEventListener('change', () => {
+    if (!canPlayInlineVideos()) {
+      videos.forEach(video => {
+        pauseInlineVideo(video);
+        video.removeAttribute('src');
+        video.load();
+      });
+    } else startVisible();
+  });
+}
+
+initInlineVideos();

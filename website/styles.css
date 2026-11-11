@@ -187,12 +187,23 @@
 .catering-copy p{font-size:15px;max-width:420px;color:#5e625a}
 .catering-copy .link-button{margin-top:32px}
 .catering-photo img{width:100%;height:100%;max-height:720px;min-height:420px;object-fit:cover;object-position:center 35%}
-.catering-photo figcaption,.catering-landscape figcaption{font-size:9px;letter-spacing:1px;margin-top:14px}
+.catering-photo figcaption,.catering-landscape figcaption,.catering-strip figcaption{font-size:9px;letter-spacing:1px;margin-top:14px}
+.catering-video-wrap{position:relative;overflow:hidden}
+.catering-inline-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
+.catering-inline-video.is-playing{opacity:1}
+.catering-video-frame[data-video-focus="cook"] img,
+.catering-video-frame[data-video-focus="cook"] .catering-inline-video{object-position:center 46%}
+.catering-video-frame[data-video-focus="gather"] img,
+.catering-video-frame[data-video-focus="gather"] .catering-inline-video{object-position:center 58%}
 .catering-offers{margin-top:36px;border-top:1px solid var(--line)}
 .catering-offers article{padding:22px 0;border-bottom:1px solid var(--line)}
 .catering-offers h3,.catering-menu h3,.catering-steps h3{font-size:20px;letter-spacing:-.4px;margin:0 0 8px}
+.catering-offer-tiles{display:grid;grid-template-columns:1fr 1fr;gap:0 6%}
+.catering-offer-tiles article{padding:16px 0}
+.catering-offer-tiles h3{margin:0;font-size:18px;line-height:1.25}
 .catering-offers p,.catering-menu p{max-width:none}
 .catering-lead{max-width:560px;color:#5e625a;margin:0 0 42px}
+.catering-method h2{margin-bottom:22px}
 .catering-steps{list-style:none;margin:0 0 56px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 6%}
 .catering-steps li{display:flex;gap:16px;align-items:flex-start;border-top:1px solid var(--line);padding-top:18px}
 .catering-steps span{font-size:10px;font-weight:700;letter-spacing:1.2px;flex:none;padding-top:5px}
@@ -200,12 +211,17 @@
 .catering-photo-pair img{min-height:0;max-height:640px;aspect-ratio:.72}
 .catering-menu-section{background:#d7d0c1}
 .catering-menu-section .section-label{border-color:#aaa396}
-.catering-menu{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 8%;border-top:1px solid #aaa396}
-.catering-menu article{padding:22px 0;border-bottom:1px solid #aaa396}
+.catering-menu{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:0 8%;border-top:1px solid #aaa396}
+.catering-menu article{padding:14px 0;border-bottom:1px solid #aaa396}
+.catering-menu h3{font-size:17px;margin:0 0 4px}
+.catering-menu p{font-size:14px}
+.catering-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 4%}
+.catering-strip img{width:100%;aspect-ratio:.75;object-fit:cover;object-position:center 30%}
 .catering-landscape{margin:56px 0 0}
 .catering-landscape img{width:100%;max-height:520px;min-height:280px;object-fit:cover;object-position:center 82%}
 .story .catering-landscape figcaption{margin-top:14px}
 .story .catering-copy p{color:#cbcfc3}
+.page-catering .story-photo img{object-position:center 22%}
 .catering-inquiry{padding-bottom:120px}
 .catering-inquiry-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;align-items:start}
 .catering-fallback{margin-top:28px;max-width:420px}
@@ -226,6 +242,9 @@
 .catering-form-help{margin-top:22px;font-size:13px;color:#5e625a;max-width:none}
 .catering-form-help a{text-decoration:underline;text-underline-offset:3px}
 .catering-form-status{min-height:1.4em;margin-top:16px;font-size:14px}
+@media(prefers-reduced-motion:reduce){
+  .page-catering .catering-inline-video{display:none!important}
+}
 @media(max-width:760px){
   .header-actions{gap:16px}
   .header-link{font-size:10px;letter-spacing:.8px}
@@ -233,10 +252,12 @@
   .page-catering .catering-hero h1{font-size:14vw;margin-bottom:22px}
   .catering-copy p{max-width:none}
   .catering-photo img{min-height:0;max-height:none;aspect-ratio:.8}
+  .catering-offer-tiles{grid-template-columns:1fr}
   .catering-steps{grid-template-columns:1fr;gap:0;margin-bottom:42px}
   .catering-steps li{padding:18px 0}
   .catering-photo-pair{grid-template-columns:1fr;gap:28px}
   .catering-menu{grid-template-columns:1fr;gap:0}
+  .catering-strip{grid-template-columns:1fr;gap:28px}
   .catering-landscape{margin-top:40px}
   .catering-landscape img{max-height:360px}
   .catering-inquiry-layout,.catering-form-grid{grid-template-columns:1fr;gap:0}

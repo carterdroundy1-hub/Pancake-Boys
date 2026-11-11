@@ -213,10 +213,55 @@
 .catering-photo-pair img{min-height:0;max-height:640px;aspect-ratio:.72}
 .catering-menu-section{background:#d7d0c1}
 .catering-menu-section .section-label{border-color:#aaa396}
-.catering-menu{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:0 8%;border-top:1px solid #aaa396}
-.catering-menu article{padding:14px 0;border-bottom:1px solid #aaa396}
-.catering-menu h3{font-size:17px;margin:0 0 4px}
-.catering-menu p{font-size:14px}
+.catering-menu-intro{margin-bottom:8px}
+.catering-menu{margin-top:42px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;border:0}
+.catering-menu article{padding:0;border:0;background:var(--paper);min-width:0;display:flex;flex-direction:column;height:100%}
+.catering-menu h3{font-size:20px;letter-spacing:-.4px;margin:0 0 8px}
+.catering-menu p{font-size:14px;color:#5e625a;max-width:none}
+.menu-card{grid-column:span 4}
+.catering-menu .menu-card-feature{grid-column:span 8;display:grid;grid-template-columns:1.2fr .9fr}
+.menu-card-feature .eyebrow{margin-bottom:14px;font-size:10px;letter-spacing:1.3px;font-weight:700;color:var(--brown)}
+.catering-packages .catering-lead{margin:0}
+.menu-card-feature h3{font-family:var(--display);font-stretch:condensed;font-size:clamp(36px,3.6vw,62px);line-height:.95;letter-spacing:-.025em;margin:0 0 14px;color:var(--ink)}
+.catering-menu .menu-card-note{grid-column:span 12;display:grid;grid-template-columns:minmax(220px,32%) 1fr;align-items:stretch}
+.menu-card-body{padding:18px 18px 20px;display:flex;flex-direction:column;justify-content:center}
+.menu-card .parallax-clip{flex:1 1 auto;min-height:210px;aspect-ratio:4/3}
+.menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:auto;height:100%;min-height:280px}
+.catering-packages .packages-head{display:grid;grid-template-columns:1.1fr .9fr;gap:8%;align-items:end;margin-bottom:42px}
+.catering-packages h2{margin:0}
+.package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 4%;align-items:stretch}
+.package-card{display:flex;flex-direction:column;min-width:0;border-top:1px solid var(--line);padding:22px 0 8px;background:transparent}
+.package-index{font-size:10px;font-weight:700;letter-spacing:1.2px;margin:0 0 14px}
+.package-card h3{font-family:var(--display);font-stretch:condensed;font-size:clamp(32px,3vw,48px);letter-spacing:-.02em;line-height:.95;margin:0 0 8px}
+.package-price{display:flex;align-items:baseline;gap:8px;margin:8px 0 0}
+.package-amount{font-family:var(--display);font-stretch:condensed;font-size:clamp(64px,6vw,92px);line-height:.86;letter-spacing:-.03em}
+.package-unit{font-size:13px;font-weight:700;letter-spacing:.6px}
+.package-estimate{font-size:10px;font-weight:700;letter-spacing:1.2px;margin:6px 0 16px;color:#5e625a}
+.package-card ul{list-style:none;margin:0;padding:0}
+.package-card li{padding:11px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.4}
+.package-card-summit{background:var(--brown);color:var(--paper);padding:26px 22px 18px;border-top:0}
+.package-card-summit .package-estimate{color:#f1eee7}
+.package-card-summit li{border-top-color:#ffffff40}
+.package-note{max-width:640px;margin-top:36px;color:#5e625a;font-size:15px}
+.package-note a{text-decoration:underline;text-underline-offset:3px}
+.packages-cta{margin-top:28px}
+.page-catering .parallax-clip{position:relative;overflow:hidden;width:100%}
+.page-catering .catering-photo .parallax-clip{aspect-ratio:.72;max-height:720px}
+.page-catering .catering-photo-pair .parallax-clip{aspect-ratio:.72;max-height:640px}
+.page-catering .catering-strip .parallax-clip{aspect-ratio:.75}
+.page-catering .catering-landscape .parallax-clip{aspect-ratio:16/10;max-height:520px;min-height:280px}
+.page-catering .story-photo .parallax-clip{aspect-ratio:.78;max-height:700px;min-height:490px}
+.page-catering .parallax-shift{position:absolute;left:0;width:100%;height:124%;top:-12%}
+.page-catering .parallax-clip img{position:absolute;inset:0;width:100%;height:100%;max-height:none;min-height:0;object-fit:cover}
+.page-catering .catering-video-wrap.parallax-shift{overflow:hidden}
+.page-catering .story-photo img,.page-catering .story-photo .parallax-shift{animation:none}
+html.motion-on .page-catering .reveal{opacity:0;transform:translate3d(0,22px,0)}
+html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transition:opacity 680ms cubic-bezier(.22,1,.36,1),transform 680ms cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i, 0) * 70ms)}
+@media(hover:hover) and (pointer:fine){
+  .page-catering .menu-card .parallax-shift>img{transition:transform 640ms cubic-bezier(.22,1,.36,1)}
+  .page-catering .menu-card:hover .parallax-shift>img{transform:scale(1.06)}
+  html.motion-on .page-catering .menu-card.is-shown:hover,html.motion-on .page-catering .package-card.is-shown:hover{transform:translate3d(0,-6px,0);transition-delay:0ms}
+}
 .catering-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 4%}
 .catering-strip img{width:100%;aspect-ratio:.75;object-fit:cover;object-position:center 30%}
 .catering-landscape{margin:56px 0 0}
@@ -245,8 +290,21 @@
 .catering-form-help{margin-top:22px;font-size:13px;color:#5e625a;max-width:none}
 .catering-form-help a{text-decoration:underline;text-underline-offset:3px}
 .catering-form-status{min-height:1.4em;margin-top:16px;font-size:14px}
+@media(max-width:1100px){
+  .catering-menu .menu-card-feature,.catering-menu .menu-card-note{display:flex;flex-direction:column}
+  .menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:16/10;height:auto;min-height:240px;flex:none}
+}
+@media(max-width:980px){
+  .catering-menu{grid-template-columns:1fr 1fr}
+  .catering-menu .menu-card{grid-column:span 1}
+  .catering-menu .menu-card-feature,.catering-menu .menu-card-note{grid-column:span 2}
+  .package-grid,.catering-packages .packages-head{grid-template-columns:1fr;gap:28px}
+}
 @media(prefers-reduced-motion:reduce){
   .page-catering .catering-inline-video{display:none!important}
+  .page-catering .parallax-shift{transform:none!important}
+  html.motion-on .page-catering .reveal{opacity:1!important;transform:none!important}
+  .page-catering .menu-card:hover .parallax-shift>img{transform:none}
 }
 @media(max-width:760px){
   .header-actions{gap:16px}
@@ -259,8 +317,16 @@
   .catering-steps{grid-template-columns:1fr;gap:0;margin-bottom:42px}
   .catering-steps li{padding:18px 0}
   .catering-photo-pair{grid-template-columns:1fr;gap:28px}
-  .catering-menu{grid-template-columns:1fr;gap:0}
+  .catering-menu{grid-template-columns:1fr;gap:18px;margin-top:36px}
+  .catering-menu .menu-card,.catering-menu .menu-card-feature,.catering-menu .menu-card-note{grid-column:auto;display:flex;flex-direction:column}
+  .menu-card .parallax-clip,.menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:4/3;height:auto;min-height:0;flex:none}
+  .menu-card-feature h3{font-size:14vw}
+  .catering-packages .packages-head,.package-grid{grid-template-columns:1fr;gap:22px}
+  .package-card-summit{padding:22px 16px 14px}
   .catering-strip{grid-template-columns:1fr;gap:28px}
+  .page-catering .catering-photo .parallax-clip{max-height:none;aspect-ratio:.8}
+  .page-catering .catering-landscape .parallax-clip{max-height:360px;min-height:0;aspect-ratio:4/3}
+  .page-catering .story-photo .parallax-clip{min-height:0;max-height:none;aspect-ratio:.87}
   .catering-landscape{margin-top:40px}
   .catering-landscape img{max-height:360px}
   .catering-inquiry-layout,.catering-form-grid{grid-template-columns:1fr;gap:0}

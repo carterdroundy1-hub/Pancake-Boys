@@ -227,6 +227,19 @@
 .menu-card-body{padding:18px 18px 20px;display:flex;flex-direction:column;justify-content:center}
 .menu-card .parallax-clip{flex:1 1 auto;min-height:210px;aspect-ratio:4/3}
 .menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:auto;height:100%;min-height:280px}
+.catering-menu .menu-card-mini{grid-column:span 3}
+.catering-menu .topping-row-start{grid-column:1 / span 3}
+.menu-card-mini h3{font-size:18px}
+.menu-card-mini .parallax-clip{aspect-ratio:1;min-height:0;flex:none}
+.catering-flavors .packages-head{margin-bottom:28px}
+.flavor-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.flavor-card{background:var(--paper);min-width:0;display:flex;flex-direction:column;height:100%}
+.flavor-card .parallax-clip{aspect-ratio:1;min-height:0}
+.flavor-card h3{font-family:var(--display);font-stretch:condensed;font-size:clamp(26px,2.2vw,36px);letter-spacing:-.02em;line-height:.95;margin:0 0 8px}
+.flavor-card p{font-size:13px;color:#5e625a;margin:0}
+.flavor-card .menu-card-body{padding:14px 14px 16px}
+.photo-credit{margin:22px 0 0;max-width:760px;font-size:12px;line-height:1.5;color:#6d716a}
+.photo-credit a{text-decoration:underline;text-underline-offset:3px}
 .catering-packages .packages-head{display:grid;grid-template-columns:1.1fr .9fr;gap:8%;align-items:end;margin-bottom:42px}
 .catering-packages h2{margin:0}
 .package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 4%;align-items:stretch}
@@ -258,9 +271,9 @@
 html.motion-on .page-catering .reveal{opacity:0;transform:translate3d(0,22px,0)}
 html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transition:opacity 680ms cubic-bezier(.22,1,.36,1),transform 680ms cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i, 0) * 70ms)}
 @media(hover:hover) and (pointer:fine){
-  .page-catering .menu-card .parallax-shift>img{transition:transform 640ms cubic-bezier(.22,1,.36,1)}
-  .page-catering .menu-card:hover .parallax-shift>img{transform:scale(1.06)}
-  html.motion-on .page-catering .menu-card.is-shown:hover,html.motion-on .page-catering .package-card.is-shown:hover{transform:translate3d(0,-6px,0);transition-delay:0ms}
+  .page-catering .menu-card .parallax-shift>img,.page-catering .flavor-card .parallax-shift>img{transition:transform 640ms cubic-bezier(.22,1,.36,1)}
+  .page-catering .menu-card:hover .parallax-shift>img,.page-catering .flavor-card:hover .parallax-shift>img{transform:scale(1.06)}
+  html.motion-on .page-catering .menu-card.is-shown:hover,html.motion-on .page-catering .flavor-card.is-shown:hover,html.motion-on .page-catering .package-card.is-shown:hover{transform:translate3d(0,-6px,0);transition-delay:0ms}
 }
 .catering-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 4%}
 .catering-strip img{width:100%;aspect-ratio:.75;object-fit:cover;object-position:center 30%}
@@ -298,13 +311,15 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .catering-menu{grid-template-columns:1fr 1fr}
   .catering-menu .menu-card{grid-column:span 1}
   .catering-menu .menu-card-feature,.catering-menu .menu-card-note{grid-column:span 2}
-  .package-grid,.catering-packages .packages-head{grid-template-columns:1fr;gap:28px}
+  .catering-menu .menu-card-mini,.catering-menu .topping-row-start{grid-column:span 1}
+  .flavor-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .package-grid,.catering-packages .packages-head,.catering-flavors .packages-head{grid-template-columns:1fr;gap:28px}
 }
 @media(prefers-reduced-motion:reduce){
   .page-catering .catering-inline-video{display:none!important}
   .page-catering .parallax-shift{transform:none!important}
   html.motion-on .page-catering .reveal{opacity:1!important;transform:none!important}
-  .page-catering .menu-card:hover .parallax-shift>img{transform:none}
+  .page-catering .menu-card:hover .parallax-shift>img,.page-catering .flavor-card:hover .parallax-shift>img{transform:none}
 }
 @media(max-width:760px){
   .header-actions{gap:16px}
@@ -318,10 +333,13 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .catering-steps li{padding:18px 0}
   .catering-photo-pair{grid-template-columns:1fr;gap:28px}
   .catering-menu{grid-template-columns:1fr;gap:18px;margin-top:36px}
-  .catering-menu .menu-card,.catering-menu .menu-card-feature,.catering-menu .menu-card-note{grid-column:auto;display:flex;flex-direction:column}
+  .catering-menu .menu-card,.catering-menu .menu-card-feature,.catering-menu .menu-card-note,.catering-menu .menu-card-mini{grid-column:auto;display:flex;flex-direction:column}
   .menu-card .parallax-clip,.menu-card-feature .parallax-clip,.menu-card-note .parallax-clip{aspect-ratio:4/3;height:auto;min-height:0;flex:none}
+  .menu-card-mini .parallax-clip,.flavor-card .parallax-clip{aspect-ratio:1}
   .menu-card-feature h3{font-size:14vw}
-  .catering-packages .packages-head,.package-grid{grid-template-columns:1fr;gap:22px}
+  .flavor-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .flavor-card h3{font-size:28px}
+  .catering-packages .packages-head,.catering-flavors .packages-head,.package-grid{grid-template-columns:1fr;gap:22px}
   .package-card-summit{padding:22px 16px 14px}
   .catering-strip{grid-template-columns:1fr;gap:28px}
   .page-catering .catering-photo .parallax-clip{max-height:none;aspect-ratio:.8}

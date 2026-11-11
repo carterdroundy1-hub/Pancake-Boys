@@ -172,3 +172,73 @@
 .field-collage-trio .field-detail{height:100%;min-height:0;align-self:stretch}
 .field-collage-trio .field-detail .photo-button{position:relative;flex:1 1 0;min-height:0;align-self:stretch}
 .field-collage-trio .field-detail .photo-button img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Homepage header actions and the shared dark button used by catering. */
+.header-actions{display:flex;align-items:center;gap:22px}
+.header-link{font-size:11px;font-weight:700;letter-spacing:1px;padding:14px 0}
+.link-button.dark{border:1px solid var(--ink);background:transparent;color:var(--ink)}
+.link-button.dark:hover{background:var(--ink);color:var(--paper)}
+.link-button.dark::before{background:var(--ink)}
+
+/* Catering page: same type, palette, and section rhythm as the homepage. */
+.page-catering .catering-hero{padding-top:140px}
+.page-catering .catering-hero h1{font-family:var(--display);font-stretch:condensed;font-size:clamp(48px,5.7vw,91px);line-height:.98;letter-spacing:-.025em;margin:0 0 28px}
+.story-layout.catering-split{align-items:start}
+.catering-copy p{font-size:15px;max-width:420px;color:#5e625a}
+.catering-copy .link-button{margin-top:32px}
+.catering-photo img{width:100%;height:100%;max-height:720px;min-height:420px;object-fit:cover;object-position:center 35%}
+.catering-photo figcaption,.catering-landscape figcaption{font-size:9px;letter-spacing:1px;margin-top:14px}
+.catering-offers{margin-top:36px;border-top:1px solid var(--line)}
+.catering-offers article{padding:22px 0;border-bottom:1px solid var(--line)}
+.catering-offers h3,.catering-menu h3,.catering-steps h3{font-size:20px;letter-spacing:-.4px;margin:0 0 8px}
+.catering-offers p,.catering-menu p{max-width:none}
+.catering-lead{max-width:560px;color:#5e625a;margin:0 0 42px}
+.catering-steps{list-style:none;margin:0 0 56px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 6%}
+.catering-steps li{display:flex;gap:16px;align-items:flex-start;border-top:1px solid var(--line);padding-top:18px}
+.catering-steps span{font-size:10px;font-weight:700;letter-spacing:1.2px;flex:none;padding-top:5px}
+.catering-photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:28px 6%}
+.catering-photo-pair img{min-height:0;max-height:640px;aspect-ratio:.72}
+.catering-menu-section{background:#d7d0c1}
+.catering-menu-section .section-label{border-color:#aaa396}
+.catering-menu{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 8%;border-top:1px solid #aaa396}
+.catering-menu article{padding:22px 0;border-bottom:1px solid #aaa396}
+.catering-landscape{margin:56px 0 0}
+.catering-landscape img{width:100%;max-height:520px;min-height:280px;object-fit:cover;object-position:center 82%}
+.story .catering-landscape figcaption{margin-top:14px}
+.story .catering-copy p{color:#cbcfc3}
+.catering-inquiry{padding-bottom:120px}
+.catering-inquiry-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;align-items:start}
+.catering-fallback{margin-top:28px;max-width:420px}
+.catering-fallback a{text-decoration:underline;text-underline-offset:3px}
+.catering-required-note{font-size:12px;color:#5e625a;margin:0 0 28px}
+.catering-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 6%}
+.catering-form .field{margin:0 0 22px}
+.catering-form label,.catering-form legend{display:block;font-size:10px;font-weight:700;letter-spacing:1.2px;margin-bottom:8px}
+.catering-form input,.catering-form select,.catering-form textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;color:var(--ink);font:inherit;padding:10px 0}
+.catering-form input::placeholder,.catering-form textarea::placeholder{color:#8a8d86}
+.catering-form textarea{min-height:140px;resize:vertical;line-height:1.5}
+.catering-form input:focus,.catering-form select:focus,.catering-form textarea:focus,.catering-form input:focus-visible,.catering-form select:focus-visible,.catering-form textarea:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.catering-setting{margin:8px 0 28px;padding:0;border:0}
+.catering-radios{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:10px}
+.catering-radios label{display:flex;align-items:center;gap:10px;margin:0;font-size:15px;font-weight:400;letter-spacing:0;color:var(--ink)}
+.catering-radios input{width:auto;accent-color:var(--brown)}
+.catering-form .link-button{margin-top:10px}
+.catering-form-help{margin-top:22px;font-size:13px;color:#5e625a;max-width:none}
+.catering-form-help a{text-decoration:underline;text-underline-offset:3px}
+.catering-form-status{min-height:1.4em;margin-top:16px;font-size:14px}
+@media(max-width:760px){
+  .header-actions{gap:16px}
+  .header-link{font-size:10px;letter-spacing:.8px}
+  .page-catering .catering-hero{padding-top:118px}
+  .page-catering .catering-hero h1{font-size:14vw;margin-bottom:22px}
+  .catering-copy p{max-width:none}
+  .catering-photo img{min-height:0;max-height:none;aspect-ratio:.8}
+  .catering-steps{grid-template-columns:1fr;gap:0;margin-bottom:42px}
+  .catering-steps li{padding:18px 0}
+  .catering-photo-pair{grid-template-columns:1fr;gap:28px}
+  .catering-menu{grid-template-columns:1fr;gap:0}
+  .catering-landscape{margin-top:40px}
+  .catering-landscape img{max-height:360px}
+  .catering-inquiry-layout,.catering-form-grid{grid-template-columns:1fr;gap:0}
+  .catering-inquiry{padding-bottom:80px}
+}

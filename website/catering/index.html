@@ -23,7 +23,7 @@
   <link rel="preload" as="image" href="../assets/logo.png">
   <link rel="stylesheet" href="../styles.css?v=catering-1">
   <script src="../content.js" defer></script>
-  <script src="../catering.js" defer></script>
+  <script src="../catering.js?v=2" defer></script>
 </head>
 <body class="page-catering">
   <header class="header on-light" id="header">
@@ -206,7 +206,8 @@
           <p>Share a few details and we will write back with a quote. The more you can tell us, the faster we can plan.</p>
           <p class="catering-fallback">Prefer to write us directly? <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a></p>
         </div>
-        <form class="catering-form" id="catering-form" action="mailto:pancak3boys@gmail.com" method="post" enctype="text/plain">
+        <form class="catering-form" id="catering-form" action="https://formspree.io/f/xyewgjbp" method="POST">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <p class="catering-required-note">Required fields are marked with an asterisk (*).</p>
           <div class="catering-form-grid">
             <div class="field">
@@ -262,7 +263,7 @@
             <textarea id="inquiry-notes" name="notes" rows="5" placeholder="Timing, dietary needs, power or setup questions, or anything else we should know."></textarea>
           </div>
           <button class="link-button dark" type="submit">SEND INQUIRY <span aria-hidden="true">↗</span></button>
-          <p class="catering-form-help">This opens an email to <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a> with your details filled in. If nothing opens, write us at that address instead.</p>
+          <p class="catering-form-help">We usually reply within a couple of days. Questions first? Email <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a>.</p>
           <p class="catering-form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>

@@ -10,7 +10,7 @@ const motion = new Set();
 
 // One-line Formspree swap: set this to your form URL (e.g. 'https://formspree.io/f/xxxxxxxx')
 // to POST the inquiry instead of opening a prefilled email.
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://formspree.io/f/xyewgjbp';
 const FORM_EMAIL = 'pancak3boys@gmail.com';
 
 function animate(element, frames, options) {
@@ -185,27 +185,47 @@ function buildInquiryMailto(form) {
 
 const form = document.querySelector('#catering-form');
 const formStatus = document.querySelector('#form-status');
+function setStatus(message, state) {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.dataset.state = state || '';
+}
 if (form) {
-  if (FORM_ENDPOINT) {
-    form.action = FORM_ENDPOINT;
-    form.method = 'POST';
-    form.enctype = 'application/x-www-form-urlencoded';
-    if (!form.querySelector('input[name="_subject"]')) {
-      const subject = document.createElement('input');
-      subject.type = 'hidden';
-      subject.name = '_subject';
-      subject.value = 'Pancake Boys catering inquiry';
-      form.prepend(subject);
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (!FORM_ENDPOINT) {
+      setStatus('Opening your email app with the inquiry filled in…');
+      window.location.href = buildInquiryMailto(form);
+      return;
     }
-  } else {
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const url = buildInquiryMailto(form);
-      if (formStatus) formStatus.textContent = 'Opening your email app with the inquiry filled in…';
-      window.location.href = url;
-    });
-  }
+    const button = form.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+    setStatus('Sending your inquiry…', 'sending');
+    try {
+      const data = new FormData(form);
+      const email = fieldValue(form, 'email');
+      if (email) data.set('_replyto', email);
+      const name = fieldValue(form, 'name');
+      data.set('_subject', name ? `Catering inquiry from ${name}` : 'Pancake Boys catering inquiry');
+      const response = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (response.ok) {
+        form.reset();
+        setStatus("Thanks! Your inquiry is in. We'll get back to you soon with a quote.", 'success');
+      } else {
+        let message = '';
+        try {
+          const result = await response.json();
+          message = (result.errors || []).map(error => error.message).filter(Boolean).join(' ');
+        } catch {}
+        setStatus(`${message || 'Something went wrong sending your inquiry.'} You can also email us at ${FORM_EMAIL}.`, 'error');
+      }
+    } catch {
+      setStatus(`We couldn't send that right now. Please email us at ${FORM_EMAIL}.`, 'error');
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
 }
 
 window.PANCAKE_CATERING_FORM = { FORM_ENDPOINT, FORM_EMAIL, buildInquiryMailto };

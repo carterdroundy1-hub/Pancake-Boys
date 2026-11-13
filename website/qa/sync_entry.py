@@ -10,7 +10,7 @@ import re
 def publish_root_home():
     source = Path('website/index.html').read_text(encoding='utf-8')
     source = re.sub(r'(src|poster|href|data-photo)="assets/', r'\1="website/assets/', source)
-    source = re.sub(r'(href|src)="(styles\.css|content\.js|app\.js)', r'\1="website/\2', source)
+    source = re.sub(r'(href|src)="(styles\.css|content\.js|app\.js|nav\.js)', r'\1="website/\2', source)
     Path('index.html').write_text(source, encoding='utf-8')
     print('Root entry now loads the shared website implementation and correct media paths.')
 
@@ -19,12 +19,27 @@ def publish_root_catering():
     source = source.replace('../assets/', '../website/assets/')
     source = source.replace('../styles.css', '../website/styles.css')
     source = source.replace('../content.js', '../website/content.js')
+    source = source.replace('../nav.js', '../website/nav.js')
     source = source.replace('../catering.js', '../website/catering.js')
     dest = Path('catering/index.html')
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(source, encoding='utf-8')
     print('Root /catering/ now loads the shared website implementation and correct media paths.')
 
+def publish_website_page(source_rel, dest_rel):
+    """Rewrite a nested website page so GitHub Pages root can load it."""
+    text = Path(source_rel).read_text(encoding='utf-8')
+    # Only relative paths in quotes. Leave absolute URLs (og:image) alone.
+    text = re.sub(r'(["\'])((?:\.\./)*)assets/', r'\1\2website/assets/', text)
+    for name in ('styles.css', 'content.js', 'app.js', 'nav.js', 'book.js', 'catering.js'):
+        text = re.sub(rf'(["\'])((?:\.\./)*){re.escape(name)}', rf'\1\2website/{name}', text)
+    dest = Path(dest_rel)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(text, encoding='utf-8')
+    print(f'{dest_rel} now loads the shared website implementation.')
+
 if __name__ == '__main__':
     publish_root_home()
     publish_root_catering()
+    publish_website_page('website/catering/book/index.html', 'catering/book/index.html')
+    publish_website_page('website/catering/book/thanks/index.html', 'catering/book/thanks/index.html')

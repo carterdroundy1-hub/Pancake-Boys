@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="On-site breakfast catering from Pancake Boys. We cook on the griddle at your gathering. Quotes on request.">
   <meta name="twitter:image" content="https://pancak3boys.com/website/assets/catering/og-catering.jpg">
   <link rel="icon" type="image/png" href="../website/assets/logo.png">
-  <link rel="preload" as="image" href="../website/assets/logo.png">
   <link rel="preload" as="image" href="../website/assets/catering/griddle-flip-poster.webp">
-  <link rel="stylesheet" href="../website/styles.css?v=catering-8">
+  <link rel="stylesheet" href="../website/styles.css?v=catering-9">
   <script src="../website/content.js" defer></script>
+  <script src="../website/nav.js?v=1" defer></script>
   <script src="../website/catering.js?v=4" defer></script>
   <script>
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-on');
@@ -33,11 +33,18 @@
 <body class="page-catering">
   <header class="header on-light" id="header">
     <a class="brand" href="../" aria-label="Pancake Boys home">
-      <img class="brand-emblem" src="../website/assets/logo.png" alt="" width="1536" height="1024">
+      <img class="brand-emblem" src="../website/assets/logo.webp" alt="" width="960" height="640">
       <span>PANCAKE<br>BOYS</span>
     </a>
     <div class="header-actions">
-      <a class="header-link" href="../">HOME</a>
+      <a class="header-link header-home" href="../">HOME</a>
+      <details class="nav-drop">
+        <summary class="header-link">CATERING <span class="nav-drop-caret" aria-hidden="true"></span></summary>
+        <div class="nav-drop-panel" id="catering-nav">
+          <a href="./" aria-current="page">Catering</a>
+          <a href="book/">Book now</a>
+        </div>
+      </details>
       <button class="menu-toggle" aria-label="Open menu" aria-haspopup="dialog" aria-controls="menu-dialog" aria-expanded="false">
         <span>MENU</span><span class="menu-lines" aria-hidden="true"></span>
       </button>
@@ -53,7 +60,7 @@
           <h1 class="reveal" id="catering-title" style="--i:1">WE BRING<br>THE GRIDDLE<br>TO YOU.</h1>
           <p class="reveal" style="--i:1">We show up and cook breakfast on site — pancakes coming off the griddle while your people gather.</p>
           <div class="catering-hero-actions reveal" style="--i:2">
-            <a class="link-button dark" href="#inquiry">REQUEST A QUOTE <span aria-hidden="true">↗</span></a>
+            <a class="link-button dark" href="book/">BOOK NOW <span aria-hidden="true">↗</span></a>
             <a class="link-button dark" href="#menu">MENU <span aria-hidden="true">↗</span></a>
             <a class="link-button dark" href="#packages">PACKAGES <span aria-hidden="true">↗</span></a>
           </div>
@@ -502,9 +509,9 @@
           </ul>
         </article>
       </div>
-      <p class="package-note reveal">Rough estimates only. Headcount, setup, dietary needs — including gluten-free on any tier — and anything else the morning needs, ask us. <a href="#inquiry">Request a quote</a> and we will write back with a real number.</p>
+      <p class="package-note reveal">Rough estimates only. Headcount, setup, dietary needs — including gluten-free on any tier — and anything else the morning needs, ask us. <a href="book/">Request a quote</a> and we will write back with a real number.</p>
       <div class="packages-cta reveal" style="--i:1">
-        <a class="link-button dark" href="#inquiry">REQUEST A QUOTE <span aria-hidden="true">↗</span></a>
+        <a class="link-button dark" href="book/">BOOK NOW <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
@@ -544,7 +551,8 @@
         <div class="catering-copy">
           <h2 class="reveal" id="inquiry-title">TELL US ABOUT<br>YOUR GATHERING.</h2>
           <p class="reveal" style="--i:1">Share a few details and we will write back with a quote.</p>
-          <p class="catering-fallback">Prefer to write us directly? <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a></p>
+          <a class="link-button dark" href="book/">BOOK NOW <span aria-hidden="true">↗</span></a>
+          <p class="catering-fallback">Or use the form on this page. Prefer to write us directly? <a href="mailto:pancak3boys@gmail.com">pancak3boys@gmail.com</a></p>
         </div>
         <form class="catering-form reveal" id="catering-form" action="https://formspree.io/f/xyewgjbp" method="POST" style="--i:1">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -618,6 +626,7 @@
     <a class="footer-wordmark" href="../" aria-label="Back to the Pancake Boys homepage">PANCAKE BOYS</a>
     <div class="footer-bottom">
       <span>MADE FOR GETTING OUTSIDE.</span>
+      <a href="book/">BOOK NOW ↗</a>
       <a href="../">BACK TO HOME ↗</a>
       <span>UTAH, USA</span>
     </div>
@@ -626,7 +635,7 @@
   <dialog id="menu-dialog" class="menu-dialog" aria-label="Main navigation">
     <div class="menu-head">
       <a class="brand menu-brand" href="../" aria-label="Pancake Boys home">
-        <img class="brand-emblem" src="../website/assets/logo.png" alt="" width="1536" height="1024">
+        <img class="brand-emblem" src="../website/assets/logo.webp" alt="" width="960" height="640">
         <span>PANCAKE<br>BOYS</span>
       </a>
       <button class="close-button" data-close aria-label="Close menu">CLOSE <span aria-hidden="true">×</span></button>
@@ -639,6 +648,7 @@
       <a href="../#merch"><span>04</span> MERCH <i>↗</i></a>
       <a href="../#support"><span>05</span> KEEP IT GOING <i>↗</i></a>
       <a href="#catering-hero"><span>06</span> CATERING <i>↗</i></a>
+      <a href="book/"><span>07</span> BOOK NOW <i>↗</i></a>
     </nav>
     <div class="menu-foot">
       <span>GOOD HIKES. FREE PANCAKES.</span>

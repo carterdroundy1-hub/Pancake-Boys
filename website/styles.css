@@ -407,7 +407,7 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
 .book-split{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
 .book-photo img,.book-thanks-photo img{width:100%;aspect-ratio:.8;object-fit:cover}
 .book-photo figcaption,.book-thanks-photo figcaption{font-size:9px;letter-spacing:1px;margin-top:12px}
-.book-proof h2,.book-mission h2{margin-bottom:18px}
+.book-mission h2{margin-bottom:18px}
 .book-mission .link-button{margin-top:28px}
 .book-packages .package-starting{font-size:10px;font-weight:700;letter-spacing:1.2px;margin:0 0 4px}
 .book-faq-list{max-width:720px;margin:0;padding:0}

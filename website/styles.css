@@ -286,6 +286,9 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
 .story .catering-copy p{color:#cbcfc3}
 .page-catering .story-photo img{object-position:center 22%}
 .page-catering .catering-mountain-photo.story-photo img{object-position:center 45%}
+/* Longer first-person body beside the same sunset photo. Measure only — headline and frame stay. */
+#why-it-matters .story-copy p{max-width:34em;line-height:1.55}
+#why-it-matters h2{margin-bottom:28px}
 .catering-inquiry{padding-bottom:120px}
 .catering-inquiry-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;align-items:start}
 .catering-fallback{margin-top:28px;max-width:420px}

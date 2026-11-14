@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="https://pancak3boys.com/website/assets/catering/og-catering.jpg">
   <link rel="icon" type="image/png" href="../website/assets/logo.png">
   <link rel="preload" as="image" href="../website/assets/catering/griddle-flip-poster.webp">
-  <link rel="stylesheet" href="../website/styles.css?v=catering-11">
+  <link rel="stylesheet" href="../website/styles.css?v=catering-12">
   <script src="../website/content.js" defer></script>
   <script src="../website/nav.js?v=1" defer></script>
   <script src="../website/bases.js?v=1" defer></script>
@@ -61,9 +61,11 @@
           <h1 class="reveal" id="catering-title" style="--i:1">WE BRING<br>THE GRIDDLE<br>TO YOU.</h1>
           <p class="reveal" style="--i:1">We show up and cook breakfast on site — pancakes coming off the griddle while your people gather.</p>
           <div class="catering-hero-actions reveal" style="--i:2">
-            <a class="link-button dark" href="book/">BOOK NOW <span aria-hidden="true">↗</span></a>
-            <a class="link-button dark" href="#menu">MENU <span aria-hidden="true">↗</span></a>
-            <a class="link-button dark" href="#packages">PACKAGES <span aria-hidden="true">↗</span></a>
+            <a class="link-button dark is-primary" href="book/">BOOK NOW <span aria-hidden="true">↗</span></a>
+            <div class="hero-secondary-links">
+              <a class="text-link" href="#flavors">PANCAKE BAR <span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="#packages">PACKAGES <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
         <figure class="catering-photo catering-video-frame parallax-frame" data-video-focus="cook">
@@ -153,7 +155,7 @@
           <span>03</span>
           <div>
             <h3>We cook, you build</h3>
-            <p>We set out a tin for each base. Guests build their own stack.</p>
+            <p>We set out a tin for each base, so you can customize each pancake the way you want it.</p>
           </div>
         </li>
       </ol>
@@ -177,88 +179,11 @@
       </div>
     </section>
 
-    <section class="section catering-menu-section" id="menu" aria-labelledby="menu-title">
-      <div class="section-label"><span>05 / BESIDE THE BAR</span><span>QUOTES ON REQUEST</span></div>
-      <div class="story-layout catering-split catering-menu-intro">
-        <div class="catering-copy">
-          <h2 class="reveal" id="menu-title">ALSO ON<br>THE TABLE.</h2>
-          <p class="reveal" style="--i:1">Syrup, fruit, and a drink. The pancakes are the bar below — we don't plate each stack.</p>
-        </div>
-        <figure class="catering-photo parallax-frame">
-          <div class="parallax-clip" data-depth="0.7">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/menu-intro-pancakes.webp" width="1080" height="1620" alt="A Pancake Boy in a logo apron holding a plate of fresh pancakes beside a waterfall, with hikers behind him" loading="lazy">
-            </div>
-          </div>
-          <figcaption>THE CREW BEHIND THE GRIDDLE.</figcaption>
-        </figure>
-      </div>
-      <!-- Beside the bar: syrup, fruit, drinks. The pancakes are the build-your-own section. -->
-      <!-- Stock photo sources and licenses are listed in website/README.md. -->
-      <div class="catering-menu">
-        <article class="menu-card menu-card-mini topping-row-start reveal">
-          <div class="parallax-clip" data-depth="0.55">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/menu-syrup.webp" width="1000" height="1250" alt="Syrup pouring from a pitcher onto a stack of pancakes" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="menu-card-body">
-            <h3>Syrup</h3>
-            <p>Classic maple and buttermilk, one or both.</p>
-          </div>
-        </article>
-        <article class="menu-card menu-card-mini reveal" style="--i:1">
-          <div class="parallax-clip" data-depth="0.55">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/menu-fruit.webp" width="1000" height="662" alt="Two hands holding a handful of ripe strawberries" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="menu-card-body">
-            <h3>Fruit</h3>
-            <p>A fresh side to go with breakfast.</p>
-          </div>
-        </article>
-        <article class="menu-card menu-card-mini reveal" style="--i:2">
-          <div class="parallax-clip" data-depth="0.5">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/menu-drinks.webp" width="1000" height="1500" alt="Hot cocoa pouring into a ceramic mug" loading="lazy" decoding="async" style="object-position:center 42%">
-            </div>
-          </div>
-          <div class="menu-card-body">
-            <h3>Hot cocoa</h3>
-            <p>Warm and easy to hold.</p>
-          </div>
-        </article>
-        <article class="menu-card menu-card-mini reveal" style="--i:3">
-          <div class="parallax-clip" data-depth="0.5">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/drink-orange.webp" width="1100" height="826" alt="A glass of orange juice with orange slices and whole oranges on a wooden table" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="menu-card-body">
-            <h3>Orange juice</h3>
-            <p>Cold, and bright.</p>
-          </div>
-        </article>
-        <article class="menu-card menu-card-note reveal">
-          <div class="parallax-clip" data-depth="0.5">
-            <div class="parallax-shift">
-              <img src="../website/assets/catering/menu-gluten-free.webp" width="1100" height="880" alt="A tall stack of pancakes with berries. Ask us if you need this gluten-free." loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="menu-card-body">
-            <h3>Gluten-free, on request</h3>
-            <p>Mention it in your inquiry and we will plan for it.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="section catering-flavors" id="flavors" aria-labelledby="flavors-title">
-      <div class="section-label"><span>06 / THE PANCAKE BAR</span><span>GUESTS BUILD THEIR OWN</span></div>
+      <div class="section-label"><span>05 / THE PANCAKE BAR</span><span>GUESTS BUILD THEIR OWN</span></div>
       <div class="packages-head">
         <h2 class="reveal" id="flavors-title">BUILD-YOUR-OWN<br>PANCAKE BAR.</h2>
-        <p class="catering-lead reveal" style="--i:1">We set out the tins. Guests top their own pancakes, so we don't plate each stack.</p>
+        <p class="catering-lead reveal" style="--i:1">We set out a tin for each base you pick, so you can customize each pancake the way you want it.</p>
       </div>
       <ol class="catering-steps bar-steps">
         <li class="reveal">
@@ -279,7 +204,7 @@
           <span>03</span>
           <div>
             <h3>Guests build a stack</h3>
-            <p>They dress their own. We keep cooking.</p>
+            <p>You can customize each pancake the way you want it.</p>
           </div>
         </li>
       </ol>
@@ -365,6 +290,83 @@
         </article>
       </div>
       <p class="photo-credit">S'mores pancakes by <a href="https://commons.wikimedia.org/wiki/File:Warm_buttermilk_home_made_pancakes_with_layers_of_hazelnut_chocolate_and_fruit_sauce_topped_with_toasted_marshmallows_and_graham_crackers.jpg">Kaush949</a>, CC BY-SA 4.0. Lemon blueberry pancakes by <a href="https://www.pexels.com/photo/pancakes-and-blueberries-11405144/">Denis Liendo</a> on Pexels. Biscoff card photo by <a href="https://www.pexels.com/photo/7144686/">Pexels</a> (warm caramel drizzle on pancakes). Cinnamon roll pancakes are Pexels 7111385. Other menu photos are Unsplash or Pexels, commercial use, no attribution required.</p>
+    </section>
+
+    <section class="section catering-menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="section-label"><span>06 / BESIDE THE BAR</span><span>QUOTES ON REQUEST</span></div>
+      <div class="story-layout catering-split catering-menu-intro">
+        <div class="catering-copy">
+          <h2 class="reveal" id="menu-title">ALSO ON<br>THE TABLE.</h2>
+          <p class="reveal" style="--i:1">Syrup, fruit, and a drink, so you can customize each pancake the way you want it.</p>
+        </div>
+        <figure class="catering-photo parallax-frame">
+          <div class="parallax-clip" data-depth="0.7">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/menu-intro-pancakes.webp" width="1080" height="1620" alt="A Pancake Boy in a logo apron holding a plate of fresh pancakes beside a waterfall, with hikers behind him" loading="lazy">
+            </div>
+          </div>
+          <figcaption>THE CREW BEHIND THE GRIDDLE.</figcaption>
+        </figure>
+      </div>
+      <!-- Beside the bar: syrup, fruit, drinks. The pancakes are the build-your-own section. -->
+      <!-- Stock photo sources and licenses are listed in website/README.md. -->
+      <div class="catering-menu">
+        <article class="menu-card menu-card-mini topping-row-start reveal">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/menu-syrup.webp" width="1000" height="1250" alt="Syrup pouring from a pitcher onto a stack of pancakes" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Syrup</h3>
+            <p>Classic maple and buttermilk, one or both.</p>
+          </div>
+        </article>
+        <article class="menu-card menu-card-mini reveal" style="--i:1">
+          <div class="parallax-clip" data-depth="0.55">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/menu-fruit.webp" width="1000" height="662" alt="Two hands holding a handful of ripe strawberries" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Fruit</h3>
+            <p>A fresh side to go with breakfast.</p>
+          </div>
+        </article>
+        <article class="menu-card menu-card-mini reveal" style="--i:2">
+          <div class="parallax-clip" data-depth="0.5">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/menu-drinks.webp" width="1000" height="1500" alt="Hot cocoa pouring into a ceramic mug" loading="lazy" decoding="async" style="object-position:center 42%">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Hot cocoa</h3>
+            <p>Warm and easy to hold.</p>
+          </div>
+        </article>
+        <article class="menu-card menu-card-mini reveal" style="--i:3">
+          <div class="parallax-clip" data-depth="0.5">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/drink-orange.webp" width="1100" height="826" alt="A glass of orange juice with orange slices and whole oranges on a wooden table" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Orange juice</h3>
+            <p>Cold, and bright.</p>
+          </div>
+        </article>
+        <article class="menu-card menu-card-note reveal">
+          <div class="parallax-clip" data-depth="0.5">
+            <div class="parallax-shift">
+              <img src="../website/assets/catering/menu-gluten-free.webp" width="1100" height="880" alt="A tall stack of pancakes with berries. Ask us if you need this gluten-free." loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Gluten-free, on request</h3>
+            <p>Mention it in your inquiry and we will plan for it.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="section catering-packages" id="packages" aria-labelledby="packages-title">

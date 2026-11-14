@@ -135,6 +135,13 @@ if (config.instagramUrl && safeUrl(config.instagramUrl)) {
   });
 }
 
+function checkedValues(form, name) {
+  const field = form.elements.namedItem(name);
+  if (!field) return [];
+  const list = field instanceof RadioNodeList ? [...field] : [field];
+  return list.filter(input => input.checked).map(input => String(input.value || '').trim()).filter(Boolean);
+}
+
 function fieldValue(form, name) {
   const field = form.elements.namedItem(name);
   if (!field) return '';
@@ -156,6 +163,8 @@ function buildInquiryMailto(form) {
     location: fieldValue(form, 'location'),
     headcount: fieldValue(form, 'headcount'),
     setting: fieldValue(form, 'setting'),
+    package_choice: fieldValue(form, 'package'),
+    pancake_bases: checkedValues(form, 'pancake_bases').join(', '),
     notes: fieldValue(form, 'notes')
   };
   const lines = [
@@ -170,6 +179,8 @@ function buildInquiryMailto(form) {
     `Location: ${data.location || '—'}`,
     `Approximate headcount: ${data.headcount || '—'}`,
     `Indoor / outdoor: ${data.setting || '—'}`,
+    `Package: ${data.package_choice || '—'}`,
+    `Pancake bases: ${data.pancake_bases || '—'}`,
     '',
     'Notes:',
     data.notes || '—'

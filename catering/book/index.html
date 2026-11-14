@@ -13,8 +13,9 @@
   <meta property="og:url" content="https://pancak3boys.com/catering/book/">
   <meta property="og:image" content="https://pancak3boys.com/website/assets/catering/og-catering.jpg">
   <link rel="icon" type="image/png" href="../../website/assets/logo.png">
-  <link rel="stylesheet" href="../../website/styles.css?v=catering-10">
+  <link rel="stylesheet" href="../../website/styles.css?v=catering-11">
   <script src="../../website/nav.js?v=1" defer></script>
+  <script src="../../website/bases.js?v=1" defer></script>
   <script src="../../website/book.js?v=1" defer></script>
 </head>
 <body class="page-catering page-book">
@@ -93,6 +94,29 @@
             </div>
           </div>
           <div class="field">
+            <label for="book-package">Package</label>
+            <select id="book-package" name="package" data-package-field>
+              <option value="">Not sure yet</option>
+              <option value="The Trail">The Trail — 2 bases</option>
+              <option value="The Ridge">The Ridge — 3 bases</option>
+              <option value="The Summit">The Summit — 4 bases</option>
+            </select>
+          </div>
+          <fieldset class="field base-picker" data-base-picker>
+            <legend>Pancake bases</legend>
+            <p class="base-picker-help" id="book-bases-help">Trail: 2, Ridge: 3, Summit: 4</p>
+            <div class="base-picker-grid">
+              <label><input type="checkbox" name="pancake_bases" value="Classic Buttermilk"> Classic Buttermilk</label>
+              <label><input type="checkbox" name="pancake_bases" value="Cinnamon Roll"> Cinnamon Roll</label>
+              <label><input type="checkbox" name="pancake_bases" value="Banana Nutella"> Banana Nutella</label>
+              <label><input type="checkbox" name="pancake_bases" value="Biscoff"> Biscoff</label>
+              <label><input type="checkbox" name="pancake_bases" value="Strawberries &amp; Cream"> Strawberries &amp; Cream</label>
+              <label><input type="checkbox" name="pancake_bases" value="S'mores"> S'mores</label>
+              <label><input type="checkbox" name="pancake_bases" value="Lemon Blueberry"> Lemon Blueberry</label>
+            </div>
+            <p class="base-picker-note" data-base-note role="status" tabindex="-1"></p>
+          </fieldset>
+          <div class="field">
             <label for="book-notes">Notes</label>
             <textarea id="book-notes" name="notes" rows="4" placeholder="Timing, gluten-free or other dietary needs, or anything else we should know."></textarea>
           </div>
@@ -123,7 +147,7 @@
       <div class="section-label"><span>PACKAGES</span><span>ROUGH ESTIMATES</span></div>
       <div class="packages-head">
         <h2 id="packages-title">A PLACE<br>TO START.</h2>
-        <p class="catering-lead">Three rough per-person estimates. They are a way to picture the morning — not a set price. Every gathering is a little different, so book yours and we will price it.</p>
+        <p class="catering-lead">Trail is 2 bases, Ridge is 3, Summit is 4. Rough estimates, not a set price. Book yours and we will price it.</p>
       </div>
       <div class="package-grid">
         <article class="package-card">
@@ -137,9 +161,9 @@
             <p class="package-price"><span class="package-amount">$4</span> <span class="package-unit">/ person</span></p>
             <p class="package-estimate">Rough estimate</p>
             <ul>
-              <li>Buttermilk pancakes, cooked on the griddle</li>
-              <li>Classic maple syrup</li>
-              <li>A fresh fruit side</li>
+            <li>Pick 2 bases</li>
+            <li>Classic maple syrup</li>
+            <li>A fresh fruit side</li>
             </ul>
           </div>
         </article>
@@ -154,10 +178,10 @@
             <p class="package-price"><span class="package-amount">$5</span> <span class="package-unit">/ person</span></p>
             <p class="package-estimate">Rough estimate</p>
             <ul>
-              <li>Everything in The Trail</li>
-              <li>Cinnamon roll pancakes</li>
-              <li>Buttermilk syrup</li>
-              <li>Whipped cream and chocolate chips</li>
+            <li>Pick 3 bases</li>
+            <li>Maple and buttermilk syrup</li>
+            <li>A fresh fruit side</li>
+            <li>Whipped cream</li>
             </ul>
           </div>
         </article>
@@ -172,11 +196,11 @@
             <p class="package-price"><span class="package-amount">$6</span> <span class="package-unit">/ person</span></p>
             <p class="package-estimate">Rough estimate</p>
             <ul>
-              <li>Everything in The Ridge</li>
-              <li>A pancake flavor from the list</li>
-              <li>Full toppings bar</li>
-              <li>Orange juice and hot cocoa</li>
-              <li>Gluten-free, when you ask</li>
+            <li>Pick 4 bases</li>
+            <li>Maple and buttermilk syrup</li>
+            <li>Fruit and whipped cream</li>
+            <li>Orange juice and hot cocoa</li>
+            <li>Gluten-free, when you ask</li>
             </ul>
           </div>
         </article>
@@ -189,11 +213,11 @@
       <h2 id="faq-title">A FEW<br>PLAIN ANSWERS.</h2>
       <dl class="book-faq-list">
         <dt>Do you come to us?</dt>
-        <dd>Yes. We show up and cook breakfast on site — pancakes coming off the griddle while your people gather. We bring the griddles and cook in front of your group, not drop-off trays.</dd>
+        <dd>Yes. We show up and cook on site, in front of your group. Guests build their own stack from the tins. We don't plate each one.</dd>
         <dt>Who is this for?</dt>
         <dd>Corporate mornings, fire crews and first responders, wedding mornings, and community or church events around Utah.</dd>
         <dt>What do the prices mean?</dt>
-        <dd>The Trail, The Ridge, and The Summit start at $4, $5, and $6 a person. They are rough estimates, not a set price. Book the gathering and we will quote yours.</dd>
+        <dd>The Trail, The Ridge, and The Summit start at $4, $5, and $6 a person — 2, 3, or 4 bases. They are rough estimates, not a set price. Book the gathering and we will quote yours.</dd>
         <dt>Can you do gluten-free?</dt>
         <dd>Mention it in your notes and we will plan for it. Gluten-free is available on any tier when you ask.</dd>
         <dt>When will we hear back?</dt>

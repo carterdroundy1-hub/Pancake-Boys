@@ -21,6 +21,7 @@ def publish_root_catering():
     source = source.replace('../content.js', '../website/content.js')
     source = source.replace('../nav.js', '../website/nav.js')
     source = source.replace('../catering.js', '../website/catering.js')
+    source = source.replace('../bases.js', '../website/bases.js')
     dest = Path('catering/index.html')
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(source, encoding='utf-8')
@@ -31,7 +32,7 @@ def publish_website_page(source_rel, dest_rel):
     text = Path(source_rel).read_text(encoding='utf-8')
     # Only relative paths in quotes. Leave absolute URLs (og:image) alone.
     text = re.sub(r'(["\'])((?:\.\./)*)assets/', r'\1\2website/assets/', text)
-    for name in ('styles.css', 'content.js', 'app.js', 'nav.js', 'book.js', 'catering.js'):
+    for name in ('styles.css', 'content.js', 'app.js', 'nav.js', 'book.js', 'catering.js', 'bases.js'):
         text = re.sub(rf'(["\'])((?:\.\./)*){re.escape(name)}', rf'\1\2website/{name}', text)
     dest = Path(dest_rel)
     dest.parent.mkdir(parents=True, exist_ok=True)

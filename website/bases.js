@@ -1,4 +1,4 @@
-// Limits a pancake-base picker to the selected package. Fewer is allowed.
+// Limits the pancake flavor picker (field name pancake_bases) to the selected package. Fewer is allowed.
 (function () {
   const limits = { 'The Trail': 2, 'The Ridge': 3, 'The Summit': 4 };
 
@@ -16,8 +16,8 @@
     const count = () => boxes.filter(box => box.checked).length;
     const message = max => {
       const choice = packageField ? packageField.value : '';
-      if (limits[choice]) return `${choice} is ${max} bases. Fewer is fine — not more.`;
-      return 'Four tins is the most we set out. Fewer is fine.';
+      if (limits[choice]) return `${choice} is ${max} flavors. Fewer is fine — not more.`;
+      return 'Four flavors is the most you can pick. Fewer is fine.';
     };
     const show = text => { if (note) note.textContent = text || ''; };
 

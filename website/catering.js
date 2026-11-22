@@ -337,6 +337,47 @@ function initInlineVideos() {
 
 initInlineVideos();
 
+// Flavor cards: the still photo shows first. On a mouse or trackpad, hovering a card
+// plays its short muted clip. Touch screens, reduced motion, and Save-Data never load it.
+function initFlavorVideos() {
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const cards = [...document.querySelectorAll('.flavor-card.has-hover-video')];
+  cards.forEach(card => {
+    const video = card.querySelector('.flavor-video');
+    if (!video) return;
+    const stop = () => {
+      video.pause();
+      video.classList.remove('is-playing');
+    };
+    card.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || !finePointer.matches || !canPlayInlineVideos()) return;
+      if (!video.getAttribute('src')) {
+        if (!video.dataset.src) return;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute('src', video.dataset.src);
+      }
+      const play = video.play();
+      if (play && typeof play.then === 'function') {
+        play.then(() => {
+          if (card.matches(':hover')) video.classList.add('is-playing');
+          else stop();
+        }).catch(stop);
+      }
+    });
+    card.addEventListener('pointerleave', stop);
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cards.forEach(card => {
+      const video = card.querySelector('.flavor-video');
+      if (video) { video.pause(); video.classList.remove('is-playing'); }
+    });
+  });
+}
+
+initFlavorVideos();
+
 function initReveals() {
   const items = [...document.querySelectorAll('.reveal')];
   if (!items.length) return;

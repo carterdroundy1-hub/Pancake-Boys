@@ -475,16 +475,10 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .page-catering .hero-secondary-links{flex-direction:column;align-items:flex-start;gap:0}
 }
 
-/* Carter's own footage and photos: landscape video frames, the four-flavor menu, the lineup shot. */
-.page-catering .catering-hero .catering-hero-video .parallax-clip{aspect-ratio:4/3;max-height:none}
-.page-catering .catering-hero .story-layout.catering-split{align-items:center}
-.catering-video-frame[data-video-focus="pour"] img,
-.catering-video-frame[data-video-focus="pour"] .catering-inline-video{object-position:60% 50%}
-.catering-video-frame[data-video-focus="swirl"] img,
-.catering-video-frame[data-video-focus="swirl"] .catering-inline-video{object-position:42% 50%}
-.catering-video-frame[data-video-focus="flip"] img,
-.catering-video-frame[data-video-focus="flip"] .catering-inline-video{object-position:45% 50%}
-.page-catering .catering-video-pair .parallax-clip{aspect-ratio:4/3;max-height:none}
+/* Carter's own footage and photos: upright vertical video in portrait frames, the four-flavor menu, the lineup shot. */
+.catering-video-frame[data-video-focus="pour"] img,.catering-video-frame[data-video-focus="pour"] .catering-inline-video,
+.catering-video-frame[data-video-focus="swirl"] img,.catering-video-frame[data-video-focus="swirl"] .catering-inline-video,
+.catering-video-frame[data-video-focus="flip"] img,.catering-video-frame[data-video-focus="flip"] .catering-inline-video{object-position:center 50%}
 .catering-flavors-intro{margin-bottom:56px}
 .catering-flavors-intro h2{margin-bottom:22px}
 .flavor-steps{grid-template-columns:1fr;gap:0;margin:32px 0 0;max-width:460px}
@@ -512,8 +506,6 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .flavor-grid-four .flavor-card{flex:0 1 calc((100% - 16px) / 2);width:calc((100% - 16px) / 2)}
 }
 @media(max-width:760px){
-  .page-catering .catering-hero .catering-hero-video .parallax-clip{aspect-ratio:4/3}
-  .page-catering .catering-video-pair .parallax-clip{aspect-ratio:4/3;max-height:none}
   .catering-flavors-intro{margin-bottom:40px}
   .flavor-steps{max-width:none}
   .flavor-grid.flavor-grid-four{gap:12px}

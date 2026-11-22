@@ -447,12 +447,7 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .book-thanks-actions .book-story-link{width:100%}
 }
 
-/* Pancake bar: classic spans the row, then six signatures in a clean 3-up. */
-.flavor-grid.bar-grid{gap:16px}
-.flavor-grid.bar-grid .bar-card-classic{flex:1 0 100%;width:100%;display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch}
-.flavor-grid.bar-grid .bar-card-classic .parallax-clip{aspect-ratio:auto;min-height:300px;height:100%}
-.flavor-grid.bar-grid .bar-card-classic h3{font-size:clamp(40px,4.2vw,72px)}
-.flavor-grid.bar-grid .flavor-card:not(.bar-card-classic){flex-basis:calc((100% - 32px) / 3);width:calc((100% - 32px) / 3)}
+/* Four house flavors: one even row on desktop, 2-up on tablet and phone. */
 .bar-kicker{margin:0 0 16px;font-size:10px;font-weight:700;letter-spacing:1.4px}
 .bar-steps{margin-bottom:28px}
 .base-picker{margin:8px 0 22px;padding:0;border:0}
@@ -462,17 +457,7 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
 .base-picker-grid label{display:flex;align-items:center;gap:12px;margin:0;min-height:44px;padding:4px 2px;font-size:15px;font-weight:400;letter-spacing:0;line-height:1.35}
 .base-picker-grid input{width:22px;height:22px;margin:0;accent-color:var(--brown);flex:none}
 .base-picker-note{min-height:1.3em;margin:10px 0 0;font-size:14px;color:var(--brown)}
-@media(max-width:980px){
-  .flavor-grid.bar-grid .bar-card-classic{flex-basis:100%;width:100%}
-  .flavor-grid.bar-grid .flavor-card:not(.bar-card-classic){flex-basis:calc((100% - 32px) / 3);width:calc((100% - 32px) / 3)}
-}
 @media(max-width:760px){
-  .flavor-grid.bar-grid{gap:12px}
-  .flavor-grid.bar-grid .bar-card-classic{display:flex;flex-direction:column}
-  .flavor-grid.bar-grid .bar-card-classic .parallax-clip{aspect-ratio:4/3;min-height:0;height:auto}
-  .flavor-grid.bar-grid .bar-card-classic h3{font-size:36px}
-  .flavor-grid.bar-grid .flavor-card:not(.bar-card-classic){flex-basis:calc((100% - 12px) / 2);width:calc((100% - 12px) / 2)}
-  .flavor-grid.bar-grid .flavor-card:not(.bar-card-classic) h3{font-size:17px}
   .base-picker-grid{grid-template-columns:1fr}
 }
 
@@ -488,4 +473,54 @@ html.motion-on .page-catering .reveal.is-shown{opacity:1;transform:none;transiti
   .catering-hero-actions{width:100%}
   .catering-hero-actions .is-primary{min-height:48px}
   .page-catering .hero-secondary-links{flex-direction:column;align-items:flex-start;gap:0}
+}
+
+/* Carter's own footage and photos: landscape video frames, the four-flavor menu, the lineup shot. */
+.page-catering .catering-hero .catering-hero-video .parallax-clip{aspect-ratio:4/3;max-height:none}
+.page-catering .catering-hero .story-layout.catering-split{align-items:center}
+.catering-video-frame[data-video-focus="pour"] img,
+.catering-video-frame[data-video-focus="pour"] .catering-inline-video{object-position:60% 50%}
+.catering-video-frame[data-video-focus="swirl"] img,
+.catering-video-frame[data-video-focus="swirl"] .catering-inline-video{object-position:42% 50%}
+.catering-video-frame[data-video-focus="flip"] img,
+.catering-video-frame[data-video-focus="flip"] .catering-inline-video{object-position:45% 50%}
+.page-catering .catering-video-pair .parallax-clip{aspect-ratio:4/3;max-height:none}
+.catering-flavors-intro{margin-bottom:56px}
+.catering-flavors-intro h2{margin-bottom:22px}
+.flavor-steps{grid-template-columns:1fr;gap:0;margin:32px 0 0;max-width:460px}
+.flavor-steps li{padding:16px 0}
+.flavor-steps li:last-child{border-bottom:1px solid var(--line)}
+.flavor-steps h3{font-size:18px}
+.flavor-steps p{margin:0}
+.flavor-grid.flavor-grid-four{gap:16px;flex-wrap:nowrap;align-items:stretch}
+.flavor-grid-four .flavor-card{flex:1 1 0;width:auto}
+.flavor-grid-four .flavor-card .parallax-clip{aspect-ratio:4/5}
+.flavor-grid-four .flavor-card .menu-card-body{padding:16px 18px 20px;justify-content:flex-start;flex:1}
+.flavor-grid-four .flavor-card h3{font-size:clamp(26px,2.2vw,38px)}
+.flavor-grid-four .flavor-card p{font-size:14px}
+.flavor-index{font-size:10px;font-weight:700;letter-spacing:1.2px;margin:0 0 10px;color:var(--brown)}
+.flavor-grid-four .flavor-card .flavor-index{font-size:10px;color:var(--brown)}
+.flavor-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;transition:opacity 420ms ease}
+.flavor-video.is-playing{opacity:1}
+.page-catering .catering-lineup .parallax-clip{aspect-ratio:16/9;max-height:620px}
+.page-catering .catering-lineup img{object-position:center 80%}
+@media(prefers-reduced-motion:reduce){
+  .flavor-video{display:none!important}
+}
+@media(max-width:980px){
+  .flavor-grid.flavor-grid-four{flex-wrap:wrap}
+  .flavor-grid-four .flavor-card{flex:0 1 calc((100% - 16px) / 2);width:calc((100% - 16px) / 2)}
+}
+@media(max-width:760px){
+  .page-catering .catering-hero .catering-hero-video .parallax-clip{aspect-ratio:4/3}
+  .page-catering .catering-video-pair .parallax-clip{aspect-ratio:4/3;max-height:none}
+  .catering-flavors-intro{margin-bottom:40px}
+  .flavor-steps{max-width:none}
+  .flavor-grid.flavor-grid-four{gap:12px}
+  .flavor-grid-four .flavor-card{flex-basis:calc((100% - 12px) / 2);width:calc((100% - 12px) / 2)}
+  .flavor-grid-four .flavor-card .menu-card-body{padding:12px 12px 14px}
+  .flavor-grid-four .flavor-card h3{font-size:21px}
+  .flavor-grid-four .flavor-card p{font-size:13px}
+  .flavor-index{margin-bottom:6px}
+  .page-catering .catering-lineup .parallax-clip{aspect-ratio:4/3;max-height:none}
 }
